@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "shards-ui/dist/css/shards.min.css";
+import Articles from "./components/articles";
+import { Row, Col, Container } from "shards-react";
+const axios = require("axios");
+class App extends React.Component {
+  state = {
+    articles: []
+  };
+  render() {
+    return (
+      <Container>
+        <Row>
+          <Col lg={{ size: 6, order: 3, offset: 3 }}>
+            <Articles articles={this.state.articles} />
+          </Col>
+        </Row>
+      </Container>
+    );
+  }
+  componentDidMount = () => {
+    return axios
+      .get("https://pure-falls-39051.herokuapp.com/api/articles")
+      .then(({ data }) => {
+        this.setState({ articles: data.articles });
+      });
+  };
 }
 
 export default App;
