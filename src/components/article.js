@@ -1,5 +1,6 @@
 import React from "react";
 import Comments from "./comments";
+import ArticleUser from "./article-user";
 import {
   Card,
   CardHeader,
@@ -12,7 +13,9 @@ import {
 export default function Article(props) {
   return (
     <Card lg="12" style={{ marginTop: "10px" }}>
-      <CardHeader>{props.author}</CardHeader>
+      <CardHeader>
+        <ArticleUser author={props.author} />
+      </CardHeader>
 
       <CardBody>
         <CardTitle>{props.title}</CardTitle>

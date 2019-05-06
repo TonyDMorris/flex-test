@@ -8,13 +8,30 @@ class Comments extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h5
-          onClick={e => {
-            this.toggle();
-          }}
-        >
+        <h5 style={{ fontSize: "15px", padding: "0px", margin: "auto" }}>
           {this.props.comment_count} comments
         </h5>
+        {this.state.collapse ? (
+          <h5
+            style={{ fontSize: "14px", padding: "0px", margin: "auto" }}
+            className="link"
+            onClick={e => {
+              this.toggle();
+            }}
+          >
+            hide
+          </h5>
+        ) : (
+          <h5
+            style={{ fontSize: "14px", padding: "0px", margin: "auto" }}
+            className="link"
+            onClick={e => {
+              this.toggle();
+            }}
+          >
+            show
+          </h5>
+        )}
         <Collapse open={this.state.collapse}>
           {this.state.comments.map(comment => {
             return (

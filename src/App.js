@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css";
 import Articles from "./components/articles";
 import { Row, Col, Container } from "shards-react";
+import "./style.css";
 const axios = require("axios");
 class App extends React.Component {
   state = {
