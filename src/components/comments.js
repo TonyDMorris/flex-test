@@ -6,7 +6,7 @@ import { Collapse } from "shards-react";
 class Comments extends React.Component {
   state = { comments: [], collapse: false };
   render() {
-    return (
+    return this.state.comments.length > 0 ? (
       <React.Fragment>
         <h5 style={{ fontSize: "15px", padding: "0px", margin: "auto" }}>
           {this.props.comment_count} comments
@@ -45,6 +45,10 @@ class Comments extends React.Component {
           })}
         </Collapse>
       </React.Fragment>
+    ) : (
+      <h5 style={{ fontSize: "14px", padding: "0px", margin: "auto" }}>
+        no comments yet
+      </h5>
     );
   }
   componentDidMount() {
