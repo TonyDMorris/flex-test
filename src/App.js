@@ -1,32 +1,26 @@
 import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Container, Row, Col } from "shards-react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css";
-import Articles from "./components/articles";
-import { Row, Col, Container } from "shards-react";
+import Home from "./views/home";
+import NavMenu from "./components/nav";
 import "./style.css";
-const axios = require("axios");
-class App extends React.Component {
-  state = {
-    articles: []
-  };
-  render() {
-    return (
+
+const App = () => {
+  return (
+    <Router>
       <Container>
         <Row>
-          <Col lg={{ size: 6, order: 3, offset: 3 }}>
-            <Articles articles={this.state.articles} />
+          <Col lg={{ size: 3, order: 0, offset: 0 }}>
+            <NavMenu />
           </Col>
+          <Route path="/" exact component={Home} />
+          <Col lg={{ size: 3, order: 1, offset: 0 }} />
         </Row>
       </Container>
-    );
-  }
-  componentDidMount = () => {
-    return axios
-      .get("https://pure-falls-39051.herokuapp.com/api/articles")
-      .then(({ data }) => {
-        this.setState({ articles: data.articles });
-      });
-  };
-}
+    </Router>
+  );
+};
 
 export default App;
