@@ -4,7 +4,7 @@ import { Col } from "shards-react";
 
 const Home = () => {
   return (
-    <Col>
+    <Col lg={{ size: 6, order: 1, offset: 0 }}>
       <Articles />
     </Col>
   );
