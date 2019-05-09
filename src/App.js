@@ -11,7 +11,7 @@ const App = () => {
   return (
     <Router>
       <Route path="/" exact component={Home} />
-      <Route path="/user" exact component={User} />;
+      <Route path="/user/" component={User} />;
     </Router>
   );
 };

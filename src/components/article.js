@@ -1,6 +1,7 @@
 import React from "react";
 import Comments from "./comments";
 import ArticleUser from "./article-user";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {
   Card,
   CardHeader,
@@ -14,7 +15,9 @@ export default function Article(props) {
   return (
     <Card lg="12" style={{ marginTop: "10px" }}>
       <CardHeader>
-        <ArticleUser author={props.author} />
+        <Link to="/user/">
+          <ArticleUser author={props.author} />
+        </Link>
       </CardHeader>
 
       <CardBody>
