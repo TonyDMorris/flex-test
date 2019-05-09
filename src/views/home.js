@@ -1,12 +1,26 @@
 import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import NavMenu from "../components/nav";
+import { Container, Row, Col } from "shards-react";
 import Articles from "../components/articles";
-import { Col } from "shards-react";
 
 const Home = () => {
   return (
-    <Col lg={{ size: 6, order: 1, offset: 0 }}>
-      <Articles />
-    </Col>
+    <Router>
+      <Container className="col-12">
+        <Row>
+          <NavMenu />
+        </Row>
+        <Row>
+          <Col cols="12" md="4" lg="3">
+            userinfo
+          </Col>
+          <Col cols="12" md="4" lg="6">
+            <Articles />;
+          </Col>
+        </Row>
+      </Container>
+    </Router>
   );
 };
 export default Home;

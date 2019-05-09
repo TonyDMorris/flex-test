@@ -4,14 +4,16 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 export default function NavMenu() {
   return (
-    <Nav vertical>
+    <Nav>
       <NavItem>
         <NavLink href="#">
           <Link to="/">Home </Link>
         </NavLink>
       </NavItem>
       <NavItem>
-        <NavLink href="#">Link</NavLink>
+        <NavLink href="#">
+          <Link to="/user">user</Link>
+        </NavLink>
       </NavItem>
       <NavItem>
         <NavLink href="#">Another Link</NavLink>
