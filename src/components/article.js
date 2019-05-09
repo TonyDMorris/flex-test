@@ -13,7 +13,7 @@ import {
 
 const Article = props => {
   return (
-    <Card lg="12" style={{ marginTop: "10px" }}>
+    <Card lg="12" style={{ marginTop: "10px" }} small="true" theme="warning">
       <CardHeader>
         <ArticleUser author={props.author} />
       </CardHeader>
