@@ -1,6 +1,6 @@
 import React from "react";
 import { Nav, NavItem, NavLink } from "shards-react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "@reach/router";
 
 export default function NavMenu() {
   return (
@@ -10,11 +10,7 @@ export default function NavMenu() {
           <Link to="/">Home </Link>
         </NavLink>
       </NavItem>
-      <NavItem>
-        <NavLink href="#">
-          <Link to="/user/">disabled</Link>
-        </NavLink>
-      </NavItem>
+      <NavItem />
       <NavItem>
         <NavLink href="#">Another Link</NavLink>
       </NavItem>

@@ -5,19 +5,14 @@ import Articles from "../components/articles";
 
 const User = props => {
   return (
-    <Container className="col-12">
-      <Row>
-        <NavMenu />
-      </Row>
-      <Row>
-        <Col cols="12" md="4" lg="3">
-          userinfo
-        </Col>
-        <Col cols="12" md="4" lg="6">
-          <Articles username={"weegembump"} />;
-        </Col>
-      </Row>
-    </Container>
+    <Row>
+      <Col cols="12" md="4" lg="3">
+        userinfo
+      </Col>
+      <Col cols="12" md="4" lg="6">
+        <Articles username={"weegembump"} />;
+      </Col>
+    </Row>
   );
 };
 

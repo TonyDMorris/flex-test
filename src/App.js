@@ -1,18 +1,25 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Router, Link } from "@reach/router";
 import User from "./views/user";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css";
+import NavMenu from "./components/nav";
+import { Container, Row, Col } from "shards-react";
 import Home from "./views/home";
 
 import "./style.css";
 
 const App = () => {
   return (
-    <Router>
-      <Route path="/" exact component={Home} />
-      <Route path="/user/" component={User} />;
-    </Router>
+    <Container className="col-12">
+      <Row>
+        <NavMenu />
+      </Row>
+      <Router>
+        <Home path="/" />
+        <User path="/user/:id" />;
+      </Router>
+    </Container>
   );
 };
 
