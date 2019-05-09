@@ -12,7 +12,7 @@ export default function NavMenu() {
       </NavItem>
       <NavItem>
         <NavLink href="#">
-          <Link to="/user/">user</Link>
+          <Link to="/user/">disabled</Link>
         </NavLink>
       </NavItem>
       <NavItem>

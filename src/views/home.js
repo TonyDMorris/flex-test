@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+
 import NavMenu from "../components/nav";
 import { Container, Row, Col } from "shards-react";
 import Articles from "../components/articles";
