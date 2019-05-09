@@ -7,7 +7,7 @@ const NavMenu = () => {
     <Nav>
       <NavItem>
         <NavLink href="#">
-          <Link to="/">Home </Link>
+          <Link to="/">Home</Link>
         </NavLink>
       </NavItem>
       <NavItem />

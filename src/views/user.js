@@ -10,7 +10,7 @@ const User = props => {
         userinfo
       </Col>
       <Col cols="12" md="4" lg="6">
-        <Articles username={"weegembump"} />;
+        <Articles author={props.author} />;
       </Col>
     </Row>
   );

@@ -21,8 +21,9 @@ class Articles extends React.Component {
     });
   }
   componentDidMount = () => {
+    const authorQuery = this.props.author ? `?author=${this.props.author}` : "";
     return axios
-      .get("https://pure-falls-39051.herokuapp.com/api/articles")
+      .get(`https://pure-falls-39051.herokuapp.com/api/articles${authorQuery}`)
       .then(({ data }) => {
         this.setState({ articles: data.articles });
       });

@@ -1,7 +1,7 @@
 import React from "react";
 import Comments from "./comments";
 import ArticleUser from "./article-user";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 import {
   Card,
   CardHeader,
@@ -11,13 +11,11 @@ import {
   CardSubtitle
 } from "shards-react";
 
-export default function Article(props) {
+const Article = props => {
   return (
     <Card lg="12" style={{ marginTop: "10px" }}>
       <CardHeader>
-        <Link to="/user/">
-          <ArticleUser author={props.author} />
-        </Link>
+        <ArticleUser author={props.author} />
       </CardHeader>
 
       <CardBody>
@@ -35,4 +33,6 @@ export default function Article(props) {
       <CardFooter />
     </Card>
   );
-}
+};
+
+export default Article;

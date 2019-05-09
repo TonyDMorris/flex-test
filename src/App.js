@@ -12,11 +12,14 @@ import "./style.css";
 const App = () => {
   return (
     <Container className="col-12">
-      <NavMenu />
+      <Row>
+        <NavMenu />
+      </Row>
       <Router>
         <Home path="/" />
-        <User path="/user" />;
+        <User path="/user/:author" />
       </Router>
+      ;
     </Container>
   );
 };
