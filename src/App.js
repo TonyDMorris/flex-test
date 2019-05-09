@@ -1,8 +1,8 @@
 import React from "react";
 import { Router, Link } from "@reach/router";
 import User from "./views/user";
-// import "bootstrap/dist/css/bootstrap.min.css";
-import "./bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import "shards-ui/dist/css/shards.min.css";
 import NavMenu from "./components/nav";
 import { Container, Row, Col } from "shards-react";
