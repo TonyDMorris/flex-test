@@ -1,5 +1,5 @@
 import React from "react";
-import NavMenu from "../components/nav";
+
 import { Container, Row, Col } from "shards-react";
 import Articles from "../components/articles";
 
