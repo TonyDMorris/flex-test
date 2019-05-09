@@ -12,12 +12,10 @@ import "./style.css";
 const App = () => {
   return (
     <Container className="col-12">
-      <Row>
-        <NavMenu />
-      </Row>
+      <NavMenu />
       <Router>
         <Home path="/" />
-        <User path="/user/:id" />;
+        <User path="/user" />;
       </Router>
     </Container>
   );

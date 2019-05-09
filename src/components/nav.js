@@ -1,8 +1,8 @@
 import React from "react";
 import { Nav, NavItem, NavLink } from "shards-react";
-import { Link } from "@reach/router";
+import { Router, Link } from "@reach/router";
 
-export default function NavMenu() {
+const NavMenu = () => {
   return (
     <Nav>
       <NavItem>
@@ -21,4 +21,6 @@ export default function NavMenu() {
       </NavItem>
     </Nav>
   );
-}
+};
+
+export default NavMenu;
