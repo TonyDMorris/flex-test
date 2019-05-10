@@ -6,13 +6,15 @@ const NavMenu = () => {
   return (
     <Nav>
       <NavItem>
-        <NavLink href="#">
+        <NavLink className="" href="#">
           <Link to="/">Home</Link>
         </NavLink>
       </NavItem>
       <NavItem />
       <NavItem>
-        <NavLink href="#">Another Link</NavLink>
+        <NavLink href="#">
+          <Link to="/signup">Signup</Link>
+        </NavLink>
       </NavItem>
       <NavItem>
         <NavLink disabled href="#">
