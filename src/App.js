@@ -2,7 +2,7 @@ import React from "react";
 import { Router, Link } from "@reach/router";
 import User from "./views/user";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import Signup from "./views/signup";
 import "shards-ui/dist/css/shards.min.css";
 import NavMenu from "./components/nav";
 import { Container, Row, Col } from "shards-react";
@@ -19,6 +19,7 @@ const App = () => {
       <Router>
         <Home path="/" />
         <User path="/user/:author" />
+        <Signup path="/signup" />
       </Router>
       ;
     </Container>
