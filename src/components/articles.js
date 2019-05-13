@@ -6,16 +6,25 @@ class Articles extends React.Component {
     articles: []
   };
   render() {
-    return this.state.articles.map(article => {
+    const { articles } = this.state;
+    return articles.map(article => {
+      const {
+        article_id,
+        comment_count,
+        author,
+        title,
+        body,
+        created_at
+      } = article;
       return (
         <Article
-          key={article.article_id}
-          comment_count={article.comment_count}
-          article_id={article.article_id}
-          author={article.author}
-          title={article.title}
-          body={article.body}
-          created_at={article.created_at}
+          key={article_id}
+          comment_count={comment_count}
+          article_id={article_id}
+          author={author}
+          title={title}
+          body={body}
+          created_at={created_at}
         />
       );
     });

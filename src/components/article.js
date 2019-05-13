@@ -11,23 +11,27 @@ import {
   CardSubtitle
 } from "shards-react";
 
-const Article = props => {
+const Article = ({
+  author,
+  title,
+  created_at,
+  body,
+  comment_count,
+  article_id
+}) => {
   return (
     <Card style={{ marginTop: "10px" }} small={true}>
       <CardHeader>
-        <ArticleUser author={props.author} />
+        <ArticleUser author={author} />
       </CardHeader>
 
       <CardBody>
-        <CardTitle>{props.title}</CardTitle>
+        <CardTitle>{title}</CardTitle>
         <CardSubtitle style={{ colour: "grey", fontSize: "10px" }}>
-          {props.created_at}
+          {created_at}
         </CardSubtitle>
-        <p>{props.body}</p>
-        <Comments
-          comment_count={props.comment_count}
-          article_id={props.article_id}
-        />
+        <p>{body}</p>
+        <Comments comment_count={comment_count} article_id={article_id} />
       </CardBody>
 
       <CardFooter />

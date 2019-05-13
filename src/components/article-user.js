@@ -17,6 +17,7 @@ class ArticleUser extends React.Component {
     });
   }
   render() {
+    const { username, avatar } = this.state;
     return (
       <Container>
         <Row>
@@ -24,7 +25,7 @@ class ArticleUser extends React.Component {
             md={{ size: 2, order: 1, offset: 0 }}
             lg={{ size: 2, order: 1, offset: 0 }}
           >
-            <Link to={`/user/${this.state.username}`}>
+            <Link to={`/user/${username}`}>
               {" "}
               <img
                 style={{
@@ -35,13 +36,13 @@ class ArticleUser extends React.Component {
                   borderRadius: "5px",
                   backgroundColor: "white"
                 }}
-                src={`${this.state.avatar}`}
+                src={`${avatar}`}
                 alt="users avatar "
               />
             </Link>
           </Col>
           <Col>
-            <h2 style={{ fontSize: "20px" }}>{this.state.username}</h2>
+            <h2 style={{ fontSize: "20px" }}>{username}</h2>
           </Col>
         </Row>
       </Container>

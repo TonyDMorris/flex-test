@@ -6,7 +6,8 @@ import { Collapse } from "shards-react";
 class Comments extends React.Component {
   state = { comments: [], collapse: false };
   render() {
-    return this.state.comments.length > 0 ? (
+    const { comments, collapse } = this.state;
+    return comments.length > 0 ? (
       <React.Fragment>
         <h5 style={{ fontSize: "15px", padding: "0px", margin: "auto" }}>
           {this.props.comment_count} comments
@@ -18,11 +19,11 @@ class Comments extends React.Component {
             this.toggle();
           }}
         >
-          {this.state.collapse ? "hide" : "show"}
+          {collapse ? "hide" : "show"}
         </h5>
 
-        <Collapse open={this.state.collapse}>
-          {this.state.comments.map(comment => {
+        <Collapse open={collapse}>
+          {comments.map(comment => {
             return (
               <Comment
                 key={comment.comment_id}
