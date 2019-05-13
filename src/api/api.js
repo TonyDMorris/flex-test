@@ -10,3 +10,11 @@ export const postLogin = (username, password) => {
       return data;
     });
 };
+
+export const getUserInfo = username => {
+  return axios
+    .get(`https://pure-falls-39051.herokuapp.com/api/users/${username}`)
+    .then(({ data }) => {
+      return data;
+    });
+};
