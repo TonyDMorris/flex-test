@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container, Row, Col } from "shards-react";
+import { Row, Col } from "shards-react";
 import Articles from "../components/articles";
 
 const User = props => {
