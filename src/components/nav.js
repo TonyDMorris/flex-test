@@ -1,6 +1,6 @@
 import React from "react";
 import { Nav, NavItem, NavLink } from "shards-react";
-import { Router, Link } from "@reach/router";
+import { Link } from "@reach/router";
 
 const NavMenu = () => {
   return (

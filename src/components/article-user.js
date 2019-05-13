@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Container, Row, Col } from "shards-react";
-import { Router, Link } from "@reach/router";
+import { Link } from "@reach/router";
 class ArticleUser extends React.Component {
   state = {
     username: "",
