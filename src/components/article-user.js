@@ -1,23 +1,20 @@
 import React from "react";
-import axios from "axios";
+
 import { Container, Row, Col } from "shards-react";
 import { Link } from "@reach/router";
+import { getUserInfo } from "../api/api";
 class ArticleUser extends React.Component {
   state = {
     username: "",
     avatar: ""
   };
   componentDidMount(props) {
-    return axios
-      .get(
-        `https://pure-falls-39051.herokuapp.com/api/users/${this.props.author}`
-      )
-      .then(({ data }) => {
-        this.setState({
-          username: data.user.username,
-          avatar: data.user.avatar_url
-        });
+    return getUserInfo(this.props.author).then(data => {
+      this.setState({
+        username: data.user.username,
+        avatar: data.user.avatar_url
       });
+    });
   }
   render() {
     return (
