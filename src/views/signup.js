@@ -178,9 +178,8 @@ class Signup extends Component {
   }
   checkInput = target => {
     const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    const { value } = target;
 
-    const { name } = target;
+    const { name, value } = target;
     let newHighlighting = this.state.highligthing;
     switch (name) {
       case "name":
@@ -206,7 +205,8 @@ class Signup extends Component {
           ? (newHighlighting[name] = true)
           : (newHighlighting[name] = false);
 
-        break;
+      case "avatarUrl":
+        newHighlighting[name] = value;
     }
 
     this.setState({ highligthing: newHighlighting });
@@ -230,7 +230,7 @@ class Signup extends Component {
           console.log(data);
           if (data.error) {
           } else {
-            navigate("/", { replace: false });
+            navigate("/login", { replace: false });
           }
         });
     }
@@ -238,8 +238,7 @@ class Signup extends Component {
   handlePopOver = e => {
     const { name } = e.target;
     this.setState({
-      toggles: { [name]: !this.state.toggles[name] },
-      ...this.state.toggles
+      toggles: { [name]: !this.state.toggles[name], ...this.state.toggles }
     });
   };
 }
