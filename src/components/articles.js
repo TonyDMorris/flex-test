@@ -9,6 +9,7 @@ class Articles extends React.Component {
     const { articles } = this.state;
     return articles.map(article => {
       const {
+        votes,
         article_id,
         comment_count,
         author,
@@ -25,6 +26,7 @@ class Articles extends React.Component {
           title={title}
           body={body}
           created_at={created_at}
+          votes={votes}
         />
       );
     });
