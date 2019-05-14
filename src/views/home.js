@@ -9,7 +9,7 @@ const Home = ({ loggedInUser, avatar_url }) => {
         <UserDash avatar_url={avatar_url} loggedInUser={loggedInUser} />
       </Col>
       <Col cols="6" md="6" lg="6">
-        <Articles />;
+        <Articles loggedInUser={loggedInUser} />
       </Col>
     </Row>
   );
