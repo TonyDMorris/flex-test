@@ -1,6 +1,7 @@
 import React from "react";
 import Comments from "./comments";
 import ArticleUser from "./article-user";
+import { Link } from "@reach/router";
 import { getArticle } from "../api/api";
 import {
   Card,
@@ -21,6 +22,7 @@ class ArticleMain extends React.Component {
     body: ""
   };
   render() {
+    const { loggedInUser } = this.props;
     const {
       title,
       author,
@@ -44,7 +46,14 @@ class ArticleMain extends React.Component {
             </CardSubtitle>
             <p>{`${body}`}</p>
 
-            <Comments comment_count={comment_count} article_id={article_id} />
+            {loggedInUser ? (
+              <Comments comment_count={comment_count} article_id={article_id} />
+            ) : (
+              <div>
+                <Link to="/signup">Signup</Link> or{" "}
+                <Link to="/login">login</Link> to see the comments
+              </div>
+            )}
           </CardBody>
 
           <CardFooter>
