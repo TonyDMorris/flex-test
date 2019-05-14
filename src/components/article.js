@@ -1,6 +1,7 @@
 import React from "react";
 import Comments from "./comments";
 import ArticleUser from "./article-user";
+import { Link } from "@reach/router";
 
 import {
   Card,
@@ -17,7 +18,8 @@ const Article = ({
   created_at,
   body,
   comment_count,
-  article_id
+  article_id,
+  votes
 }) => {
   return (
     <Card style={{ marginTop: "10px" }} small={true}>
@@ -26,15 +28,17 @@ const Article = ({
       </CardHeader>
 
       <CardBody>
-        <CardTitle>{title}</CardTitle>
+        <CardTitle>
+          <Link to={`/articles/${article_id}`}>{title}</Link>
+        </CardTitle>
         <CardSubtitle style={{ colour: "grey", fontSize: "10px" }}>
           {created_at}
         </CardSubtitle>
-        <p>{body}</p>
-        <Comments comment_count={comment_count} article_id={article_id} />
       </CardBody>
 
-      <CardFooter />
+      <CardFooter>
+        <div className="offset-md-11">{votes}💪</div>
+      </CardFooter>
     </Card>
   );
 };
