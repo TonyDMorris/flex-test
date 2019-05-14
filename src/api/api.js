@@ -1,8 +1,9 @@
 import axios from "axios";
+const URL = "https://pure-falls-39051.herokuapp.com";
 
 export const postLogin = (username, password) => {
   return axios
-    .post(`https://pure-falls-39051.herokuapp.com/login`, {
+    .post(`${URL}/login`, {
       username,
       password
     })
@@ -10,11 +11,25 @@ export const postLogin = (username, password) => {
       return data;
     });
 };
+export const postArticle = (article, token) => {
+  const config = {
+    headers: { Authorization: "bearer " + token }
+  };
+  return axios
+    .post(`${URL}/api/articles`, article, config)
+    .then(({ data: { article } }) => {
+      return article;
+    });
+};
 
 export const getUserInfo = username => {
-  return axios
-    .get(`https://pure-falls-39051.herokuapp.com/api/users/${username}`)
-    .then(({ data }) => {
-      return data;
-    });
+  return axios.get(`${URL}/api/users/${username}`).then(({ data }) => {
+    return data;
+  });
+};
+
+export const getArticle = article_id => {
+  return axios.get(`${URL}/api/articles/${article_id}`).then(({ data }) => {
+    return data.article;
+  });
 };
