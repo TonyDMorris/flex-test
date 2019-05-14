@@ -33,3 +33,13 @@ export const getArticle = article_id => {
     return data.article;
   });
 };
+
+export const getArticles = config => {
+  return axios
+    .get(`https://pure-falls-39051.herokuapp.com/api/articles`, {
+      params: config
+    })
+    .then(({ data }) => {
+      return data.articles;
+    });
+};
