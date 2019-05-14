@@ -30,6 +30,7 @@ class Comments extends React.Component {
                 created_at={comment.created_at}
                 author={comment.author}
                 body={comment.body}
+                votes={comment.votes}
               />
             );
           })}

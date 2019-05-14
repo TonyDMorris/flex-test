@@ -1,6 +1,7 @@
 import React from "react";
 import ArticleUser from "./article-user";
-const Comment = ({ author, body }) => {
+import VoteBar from "../components/vote-bar";
+const Comment = ({ author, body, votes }) => {
   return (
     <div
       style={{ backgroundColor: "#f5f6f6" }}
@@ -13,6 +14,8 @@ const Comment = ({ author, body }) => {
         className="p-2 mt-3 border rounded"
       >
         <p>{body}</p>
+        <VoteBar votes={votes} />
+        <div className="offset-md-11" />
       </div>
     </div>
   );
