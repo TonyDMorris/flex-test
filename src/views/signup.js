@@ -227,7 +227,6 @@ class Signup extends Component {
             : "http://chittagongit.com/images/default-profile-icon/default-profile-icon-24.jpg"
         })
         .then(({ data }) => {
-          console.log(data);
           if (data.error) {
           } else {
             navigate("/login", { replace: false });
