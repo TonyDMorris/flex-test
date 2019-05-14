@@ -18,34 +18,29 @@ class ArticleUser extends React.Component {
   }
   render() {
     const { username, avatar } = this.state;
+
     return (
-      <Container>
-        <Row>
-          <Col
-            md={{ size: 2, order: 1, offset: 0 }}
-            lg={{ size: 2, order: 1, offset: 0 }}
-          >
-            <Link to={`/user/${username}`}>
-              {" "}
-              <img
-                style={{
-                  margin: "auto",
-                  height: "50px",
-                  width: "50px",
-                  border: "solid 1px red",
-                  borderRadius: "5px",
-                  backgroundColor: "white"
-                }}
-                src={`${avatar}`}
-                alt="users avatar "
-              />
-            </Link>
-          </Col>
-          <Col>
-            <h2 style={{ fontSize: "20px" }}>{username}</h2>
-          </Col>
-        </Row>
-      </Container>
+      <span className="p0">
+        <Link className={"offset-0"} to={`/user/${username}`}>
+          {" "}
+          <img
+            style={{
+              padding: "0px",
+              margin: "0",
+              height: "50px",
+              width: "50px",
+              border: "solid 2px green",
+              borderRadius: "5px",
+              backgroundColor: "white"
+            }}
+            src={`${avatar}`}
+            alt="users avatar "
+          />
+        </Link>
+        <strong className="col-2 offset-0" style={{ fontSize: "20px" }}>
+          {username}
+        </strong>
+      </span>
     );
   }
 }
