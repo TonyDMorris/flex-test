@@ -106,7 +106,7 @@ class ArticleForm extends React.Component {
           : (highlighting[name] = false);
 
         break;
-      case "title":
+      default:
         value.length > 10 && value.length < 50
           ? (highlighting[name] = true)
           : (highlighting[name] = false);

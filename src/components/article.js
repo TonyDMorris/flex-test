@@ -1,5 +1,5 @@
 import React from "react";
-import Comments from "./comments";
+
 import ArticleUser from "./article-user";
 import { Link } from "@reach/router";
 
@@ -16,8 +16,7 @@ const Article = ({
   author,
   title,
   created_at,
-  body,
-  comment_count,
+
   article_id,
   votes
 }) => {
@@ -37,7 +36,12 @@ const Article = ({
       </CardBody>
 
       <CardFooter>
-        <div className="offset-md-11">{votes}💪</div>
+        <div className="offset-md-11">
+          {votes}
+          <span role="img" aria-label="muscle emoji">
+            💪
+          </span>
+        </div>
       </CardFooter>
     </Card>
   );

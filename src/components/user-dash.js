@@ -8,7 +8,11 @@ const UserDash = ({ loggedInUser, avatar_url }) => {
         <CardBody>
           {loggedInUser}
           <br />
-          <img style={{ width: "150px" }} src={`${avatar_url}`} />
+          <img
+            style={{ width: "150px" }}
+            src={`${avatar_url}`}
+            alt="users avatar"
+          />
           <br />
 
           <Link to="/new-article">create new article</Link>

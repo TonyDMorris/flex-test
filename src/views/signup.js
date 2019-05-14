@@ -204,8 +204,8 @@ class Signup extends Component {
         value.length > 6 && /\d\w/.test(value) && !/\s/.test(value)
           ? (newHighlighting[name] = true)
           : (newHighlighting[name] = false);
-
-      case "avatarUrl":
+        break;
+      default:
         newHighlighting[name] = value;
     }
 

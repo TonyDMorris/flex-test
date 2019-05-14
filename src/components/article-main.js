@@ -48,7 +48,12 @@ class ArticleMain extends React.Component {
           </CardBody>
 
           <CardFooter>
-            <div className="offset-11">💪{votes}</div>
+            <div className="offset-11">
+              <span role="img" aria-label="muscle emoji">
+                💪
+              </span>
+              {votes}
+            </div>
           </CardFooter>
         </Card>
       )

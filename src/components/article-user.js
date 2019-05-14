@@ -1,6 +1,5 @@
 import React from "react";
 
-import { Container, Row, Col } from "shards-react";
 import { Link } from "@reach/router";
 import { getUserInfo } from "../api/api";
 class ArticleUser extends React.Component {
