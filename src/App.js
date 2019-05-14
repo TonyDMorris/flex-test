@@ -15,7 +15,7 @@ import "shards-ui/dist/css/shards.min.css";
 import "./style.css";
 
 class App extends React.Component {
-  state = { loggedInUser: "", token: "", avatar_url: "" };
+  state = { loggedInUser: false, token: "", avatar_url: "" };
   render() {
     const { loggedInUser, avatar_url, token } = this.state;
     return (
@@ -26,11 +26,20 @@ class App extends React.Component {
           <Router>
             <Home
               avatar_url={avatar_url}
+              token={token}
               loggedInUser={loggedInUser}
               path="/"
             />
-            <SingleArticle path="articles/:article_id" />
-            <User path="/user/:author" />
+            <SingleArticle
+              token={token}
+              loggedInUser={loggedInUser}
+              path="articles/:article_id"
+            />
+            <User
+              token={token}
+              loggedInUser={loggedInUser}
+              path="/user/:author"
+            />
             <Signup path="/signup" />
             <Login login={this.login} path="/login" />
             {loggedInUser && (
