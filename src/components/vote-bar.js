@@ -4,7 +4,7 @@ const VoteBar = ({ media_id, incrementVotes, votes, style }) => {
   const [threeWaySwitch, setSwitch] = useState(0);
 
   return (
-    <ButtonGroup className="col-3 offset-9">
+    <ButtonGroup>
       <Button
         disabled={threeWaySwitch === 1}
         onClick={e => {
