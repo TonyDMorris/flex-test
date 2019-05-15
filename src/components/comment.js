@@ -1,7 +1,7 @@
 import React from "react";
 import ArticleUser from "./article-user";
 import VoteBar from "../components/vote-bar";
-const Comment = ({ author, body, votes, incrementVote }) => {
+const Comment = ({ author, body, votes, incrementVotes, comment_id }) => {
   return (
     <div
       style={{ backgroundColor: "#f5f6f6" }}
@@ -14,7 +14,11 @@ const Comment = ({ author, body, votes, incrementVote }) => {
         className="p-2 mt-3 border rounded"
       >
         <p>{body}</p>
-        <VoteBar votes={votes} />
+        <VoteBar
+          media_id={comment_id}
+          incrementVotes={incrementVotes}
+          votes={votes}
+        />
         <div className="offset-md-11" />
       </div>
     </div>
