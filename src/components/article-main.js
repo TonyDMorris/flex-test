@@ -2,6 +2,8 @@ import React from "react";
 import Comments from "./comments";
 import ArticleUser from "./article-user";
 import VoteBar from "../components/vote-bar";
+
+import Topic from "./topic";
 import { patchVotes } from "../api/api";
 import { Link } from "@reach/router";
 import { getArticle } from "../api/api";
@@ -11,7 +13,10 @@ import {
   CardTitle,
   CardBody,
   CardFooter,
-  CardSubtitle
+  CardSubtitle,
+  Row,
+  Col,
+  Container
 } from "shards-react";
 
 class ArticleMain extends React.Component {
@@ -21,11 +26,12 @@ class ArticleMain extends React.Component {
     comment_count: "",
     article_id: "",
     votes: "",
-    body: ""
+    body: "",
+    topic: ""
   };
 
   render() {
-    const { loggedInUser } = this.props;
+    const { loggedInUser, token } = this.props;
     const {
       title,
       author,
@@ -33,7 +39,8 @@ class ArticleMain extends React.Component {
       article_id,
       votes,
       body,
-      created_at
+      created_at,
+      topic
     } = this.state;
     return title && loggedInUser ? (
       <Card style={{ marginTop: "10px" }} small={false}>
@@ -51,7 +58,8 @@ class ArticleMain extends React.Component {
 
           {loggedInUser ? (
             <Comments
-              token={this.props.token}
+              loggedInUser={loggedInUser}
+              token={token}
               comment_count={comment_count}
               article_id={article_id}
             />
@@ -64,12 +72,20 @@ class ArticleMain extends React.Component {
         </CardBody>
 
         <CardFooter>
-          <VoteBar
-            style={{ transform: "translate(10px)" }}
-            media_id={article_id}
-            incrementVotes={this.incrementVotes}
-            votes={votes}
-          />
+          <Container>
+            <Row>
+              <Col>
+                <Topic topic={topic} />
+              </Col>
+              <Col className="col-auto">
+                <VoteBar
+                  media_id={article_id}
+                  incrementVotes={this.incrementVotes}
+                  votes={votes}
+                />
+              </Col>
+            </Row>
+          </Container>
         </CardFooter>
       </Card>
     ) : (
