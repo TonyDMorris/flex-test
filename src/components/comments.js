@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import Comment from "./comment";
 import { Collapse } from "shards-react";
-
+import { patchVotes } from "../api/api";
 class Comments extends React.Component {
   state = { comments: [], collapse: false };
   render() {
@@ -56,6 +56,19 @@ class Comments extends React.Component {
   toggle() {
     this.setState({ collapse: !this.state.collapse });
   }
+  incrementVotes = (id, isComment) => {
+    patchVotes(id, isComment).then(comment => {
+      const newComments = this.state.comments.map(oldComment => {
+        if (oldComment.comment_id === id) {
+          oldComment.comment_id++;
+          return oldComment;
+        } else {
+          return oldComment;
+        }
+      });
+      this.setState({ comments: newComments });
+    });
+  };
 }
 
 export default Comments;
