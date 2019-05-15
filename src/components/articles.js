@@ -25,6 +25,7 @@ class Articles extends React.Component {
         >
           {articles.map(article => {
             const {
+              topic,
               votes,
               article_id,
               comment_count,
@@ -35,6 +36,8 @@ class Articles extends React.Component {
             } = article;
             return (
               <Article
+                token={this.props.token}
+                topic={topic}
                 key={article_id}
                 comment_count={comment_count}
                 article_id={article_id}
