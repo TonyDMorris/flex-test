@@ -91,9 +91,12 @@ class ArticleForm extends React.Component {
   handlePopOver = e => {
     const { name } = e.target;
 
-    this.setState({
-      toggles: { [name]: !this.state.toggles[name], ...this.state.toggles }
-    });
+    this.setState(
+      {
+        toggles: { [name]: !this.state.toggles[name], ...this.state.toggles }
+      },
+      () => console.log(this.state.toggles[name])
+    );
   };
   handleChange = e => {
     const { name, value } = e.target;
