@@ -20,8 +20,7 @@ class ArticleUser extends React.Component {
 
     return (
       <span className="p0">
-        <Link className={"offset-0"} to={`/user/${username}`}>
-          {" "}
+        <Link className={"offset-0"} to={`/user/${username}`} type="image/png">
           <img
             style={{
               padding: "0px",
@@ -30,7 +29,8 @@ class ArticleUser extends React.Component {
               width: "50px",
               border: "solid 2px green",
               borderRadius: "5px",
-              backgroundColor: "white"
+              backgroundImage:
+                'url("http://s3.amazonaws.com/37assets/svn/765-default-avatar.png")'
             }}
             src={`${avatar}`}
             alt="users avatar "

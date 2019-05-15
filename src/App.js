@@ -22,7 +22,7 @@ class App extends React.Component {
       <div>
         <NavMenu logout={this.logout} loggedInUser={this.state.loggedInUser} />
 
-        <Container className="col-12">
+        <Container className="col-12 align-content-center">
           <Router>
             <Home
               avatar_url={avatar_url}

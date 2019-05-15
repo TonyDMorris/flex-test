@@ -1,23 +1,42 @@
 import React from "react";
-import { Card, CardBody } from "shards-react";
+import {
+  Card,
+  CardBody,
+  Container,
+  Col,
+  Row,
+  Button,
+  ButtonGroup
+} from "shards-react";
 import { Link } from "@reach/router";
 const UserDash = ({ loggedInUser, avatar_url }) => {
   return (
     loggedInUser && (
-      <Card style={{ marginTop: "10px" }}>
-        <CardBody>
-          {loggedInUser}
-          <br />
-          <img
-            style={{ width: "150px" }}
-            src={`${avatar_url}`}
-            alt="users avatar"
-          />
-          <br />
-
-          <Link to="/new-article">create new article</Link>
-        </CardBody>
-      </Card>
+      <Col className="col-3 mt-5">
+        <Card>
+          <CardBody>
+            <Container>
+              <Row>
+                <Col />
+                <Col>{loggedInUser}</Col>
+                <Col />
+              </Row>
+              <Row>
+                <Col />
+                <Col>
+                  <img style={{ maxWidth: "150px" }} src={`${avatar_url}`} />
+                </Col>
+                <Col />
+              </Row>
+              <Link to="/new-article">
+                <Button>
+                  <strong>create new article</strong>
+                </Button>
+              </Link>
+            </Container>
+          </CardBody>
+        </Card>
+      </Col>
     )
   );
 };
