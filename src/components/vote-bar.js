@@ -1,6 +1,6 @@
 import React from "react";
 import { ButtonGroup, Button } from "shards-react";
-const VoteBar = ({ article_id, incrementVote, votes }) => {
+const VoteBar = ({ media_id, incrementVotes, votes }) => {
   return (
     <ButtonGroup>
       <Button>
