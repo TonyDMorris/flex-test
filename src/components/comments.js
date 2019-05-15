@@ -27,10 +27,12 @@ class Comments extends React.Component {
             return (
               <Comment
                 key={comment.comment_id}
+                comment_id={comment.comment_id}
                 created_at={comment.created_at}
                 author={comment.author}
                 body={comment.body}
                 votes={comment.votes}
+                incrementVotes={this.incrementVotes}
               />
             );
           })}
@@ -56,11 +58,11 @@ class Comments extends React.Component {
   toggle() {
     this.setState({ collapse: !this.state.collapse });
   }
-  incrementVotes = (id, isComment) => {
-    patchVotes(id, isComment).then(comment => {
+  incrementVotes = (id, isComment, n) => {
+    patchVotes(id, isComment, n, this.props.token).then(comment => {
       const newComments = this.state.comments.map(oldComment => {
         if (oldComment.comment_id === id) {
-          oldComment.comment_id++;
+          oldComment.votes += n;
           return oldComment;
         } else {
           return oldComment;
