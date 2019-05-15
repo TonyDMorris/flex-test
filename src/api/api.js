@@ -55,3 +55,14 @@ export const patchVotes = (id, isComment, n, token) => {
       return data.comment ? data.comment : data.article;
     });
 };
+
+export const submitComment = (comment, token) => {
+  const config = {
+    headers: { Authorization: "bearer " + token }
+  };
+  return axios
+    .post(`${URL}/api/articles/${comment.article_id}/comments`, comment, config)
+    .then(({ data: { comment } }) => {
+      return comment;
+    });
+};
