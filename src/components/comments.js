@@ -1,12 +1,14 @@
 import React from "react";
 import axios from "axios";
 import Comment from "./comment";
-import { Collapse } from "shards-react";
-import { patchVotes } from "../api/api";
+
+import { Collapse, FormTextarea, Button } from "shards-react";
+import { patchVotes, submitComment } from "../api/api";
 class Comments extends React.Component {
-  state = { comments: [], collapse: false };
+  state = { comments: [], collapse: false, commentBody: "" };
   render() {
     const { comments, collapse } = this.state;
+
     return comments.length > 0 ? (
       <React.Fragment>
         <h5 style={{ fontSize: "15px", padding: "0px", margin: "auto" }}>
@@ -36,6 +38,18 @@ class Comments extends React.Component {
               />
             );
           })}
+          <br />
+          <FormTextarea
+            onChange={e => {
+              this.setState({ commentBody: e.target.value });
+            }}
+            value={this.state.commentBody}
+          />
+          <br />
+
+          <Button onClick={this.handleSubmit} theme="success">
+            Post Comment
+          </Button>
         </Collapse>
       </React.Fragment>
     ) : (
@@ -70,6 +84,24 @@ class Comments extends React.Component {
       });
       this.setState({ comments: newComments });
     });
+  };
+
+  handleSubmit = () => {
+    if (this.state.commentBody.length > 0) {
+      const { article_id, token, loggedInUser } = this.props;
+      const comment = {
+        body: this.state.commentBody,
+        article_id,
+        username: loggedInUser
+      };
+
+      submitComment(comment, token).then(comment => {
+        this.setState({
+          comments: [...this.state.comments, comment],
+          commentBody: ""
+        });
+      });
+    }
   };
 }
 
