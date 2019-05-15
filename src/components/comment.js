@@ -1,7 +1,7 @@
 import React from "react";
 import ArticleUser from "./article-user";
 import VoteBar from "../components/vote-bar";
-const Comment = ({ author, body, votes }) => {
+const Comment = ({ author, body, votes, incrementVote }) => {
   return (
     <div
       style={{ backgroundColor: "#f5f6f6" }}
