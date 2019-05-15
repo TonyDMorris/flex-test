@@ -43,3 +43,12 @@ export const getArticles = config => {
       return data.articles;
     });
 };
+
+export const patchVotes = (id, isComment) => {
+  const selector = { true: "comments", false: "articles" };
+  return axios
+    .patch(`${URL}/${selector[isComment]}/${id}`, { inc_votes: 1 })
+    .then(({ data }) => {
+      return data.comment ? data.comment : data.article;
+    });
+};
