@@ -1,18 +1,33 @@
-import React from "react";
 import { ButtonGroup, Button } from "shards-react";
-const VoteBar = ({ media_id, incrementVotes, votes }) => {
+import React, { useState } from "react";
+const VoteBar = ({ media_id, incrementVotes, votes, style }) => {
+  const [threeWaySwitch, setSwitch] = useState(0);
+
   return (
-    <ButtonGroup>
-      <Button>
-        <span style={{ fontSize: "1rem" }} role="img" aria-label="muscle emoji">
+    <ButtonGroup className="col-3 offset-9">
+      <Button
+        disabled={threeWaySwitch === 1}
+        onClick={e => {
+          setSwitch(threeWaySwitch + 1);
+          incrementVotes(media_id, true, 1);
+        }}
+      >
+        <span role="img" aria-label="muscle emoji">
           💪
-          {votes >= 0 && votes}
         </span>
       </Button>
-      <Button>
+      <Button theme={votes < 0 ? "danger" : "success"}>
+        <strong>{votes}</strong>
+      </Button>
+      <Button
+        disabled={threeWaySwitch === -1}
+        onClick={e => {
+          setSwitch(threeWaySwitch - 1);
+          incrementVotes(media_id, true, -1);
+        }}
+      >
         <span role="img" aria-label="hate emoji">
           😠
-          {votes <= -1 && votes}
         </span>
       </Button>
     </ButtonGroup>
