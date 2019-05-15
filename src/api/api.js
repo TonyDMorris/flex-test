@@ -44,10 +44,13 @@ export const getArticles = config => {
     });
 };
 
-export const patchVotes = (id, isComment) => {
+export const patchVotes = (id, isComment, n, token) => {
+  const config = {
+    headers: { Authorization: "bearer " + token }
+  };
   const selector = { true: "comments", false: "articles" };
   return axios
-    .patch(`${URL}/${selector[isComment]}/${id}`, { inc_votes: 1 })
+    .patch(`${URL}/api/${selector[isComment]}/${id}`, { inc_votes: n }, config)
     .then(({ data }) => {
       return data.comment ? data.comment : data.article;
     });
