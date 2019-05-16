@@ -10,6 +10,7 @@ import Home from "./views/home";
 import SingleArticle from "./views/single-article";
 import CreateNewArticle from "./views/create-new-article";
 import { getUserInfo } from "./api/api";
+import ArticleDeleted from "./views/article-deleted";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css";
 import "./style.css";
@@ -49,6 +50,7 @@ class App extends React.Component {
                 path="/new-article"
               />
             )}
+            <ArticleDeleted path="/article-deleted" />
           </Router>
         </Container>
       </div>
