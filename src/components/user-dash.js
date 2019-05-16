@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Card,
-  CardBody,
-  Container,
-  Col,
-  Row,
-  Button,
-  ButtonGroup
-} from "shards-react";
+import { Card, CardBody, Container, Col, Row, Button } from "shards-react";
 import { Link } from "@reach/router";
 const UserDash = ({ loggedInUser, avatar_url }) => {
   return (
@@ -24,7 +16,11 @@ const UserDash = ({ loggedInUser, avatar_url }) => {
               <Row className="justify-content-center">
                 <Col className="col-auto" />
                 <Col>
-                  <img style={{ maxWidth: "150px" }} src={`${avatar_url}`} />
+                  <img
+                    style={{ maxWidth: "150px" }}
+                    src={`${avatar_url}`}
+                    alt="users avatar"
+                  />
                 </Col>
                 <Col className="col-auto" />
               </Row>

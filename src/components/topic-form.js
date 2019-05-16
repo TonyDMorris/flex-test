@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { InputGroup, FormInput, Button, InputGroupAddon } from "shards-react";
 import Topics from "./topics";
 import { postTopic } from "../api/api";
@@ -11,7 +11,7 @@ class TopicForm extends React.Component {
     error: ""
   };
   render() {
-    const { topic, description, more, error } = this.state;
+    const { topic, more, error } = this.state;
 
     return (
       <React.Fragment>
