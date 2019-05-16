@@ -21,18 +21,24 @@ const UserDash = ({ loggedInUser, avatar_url }) => {
                 <Col>{loggedInUser}</Col>
                 <Col />
               </Row>
-              <Row>
-                <Col />
+              <Row className="justify-content-center">
+                <Col className="col-auto" />
                 <Col>
                   <img style={{ maxWidth: "150px" }} src={`${avatar_url}`} />
                 </Col>
-                <Col />
+                <Col className="col-auto" />
               </Row>
-              <Link to="/new-article">
-                <Button>
-                  <strong>create new article</strong>
-                </Button>
-              </Link>
+              <Row className="justify-content-center">
+                <Col className="col-auto" />
+                <Col>
+                  <Link to="/new-article">
+                    <Button>
+                      <strong>create new article</strong>
+                    </Button>
+                  </Link>
+                </Col>
+                <Col className="col-auto" />
+              </Row>
             </Container>
           </CardBody>
         </Card>
