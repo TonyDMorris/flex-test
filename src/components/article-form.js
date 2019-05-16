@@ -1,5 +1,6 @@
 import React from "react";
 import { postArticle } from "../api/api";
+import TopicForm from "./topic-form";
 import { navigate } from "@reach/router";
 import {
   FormTextarea,
@@ -17,7 +18,7 @@ class ArticleForm extends React.Component {
     toggles: { body: false, title: false },
     body: null,
     title: null,
-    topic: "cooking",
+    topic: null,
     highlighting: { body: null, title: null }
   };
   handlePopOver = e => {
@@ -66,7 +67,7 @@ class ArticleForm extends React.Component {
             valid={body}
             name="body"
             id="body"
-            style={{ height: "400px" }}
+            style={{ height: "200px" }}
             onChange={this.handleChange}
           />
           <Popover
@@ -76,6 +77,7 @@ class ArticleForm extends React.Component {
           >
             <PopoverBody>your title should be descriptive</PopoverBody>
           </Popover>
+          <TopicForm token={this.props.token} placeTopic={this.placeTopic} />
           <Button
             onClick={this.handleSubmit}
             disabled={body && title ? false : true}
@@ -129,6 +131,9 @@ class ArticleForm extends React.Component {
     postArticle(article, this.props.token).then(article => {
       navigate(`/articles/${article.article_id}`);
     });
+  };
+  placeTopic = topic => {
+    this.setState({ topic });
   };
 }
 

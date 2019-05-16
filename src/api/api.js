@@ -79,3 +79,17 @@ export const deleteComment = (comment_id, token) => {
   };
   return axios.delete(`${URL}/api/comments/${comment_id}`, config);
 };
+
+export const getTopics = () => {
+  return axios.get(`${URL}/api/topics`).then(({ data }) => data.topics);
+};
+
+export const postTopic = (topic, description, token) => {
+  const config = {
+    headers: { Authorization: "bearer " + token }
+  };
+  const newTopic = { slug: topic, description };
+  return axios.post(`${URL}/api/topics`, newTopic, config).then(({ data }) => {
+    console.log(data);
+  });
+};
