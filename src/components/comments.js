@@ -3,14 +3,24 @@ import axios from "axios";
 import Comment from "./comment";
 
 import { Collapse, FormTextarea, Button } from "shards-react";
-import { patchVotes, submitComment, deleteComment } from "../api/api";
+import {
+  patchVotes,
+  submitComment,
+  deleteComment,
+  getArticleComments
+} from "../api/api";
 
 class Comments extends React.Component {
-  state = { comments: [], collapse: false, commentBody: "" };
+  state = {
+    comments: [],
+    collapse: false,
+    commentBody: "",
+    show: false
+  };
   render() {
-    const { comments, collapse } = this.state;
+    const { comments, collapse, show } = this.state;
 
-    return comments.length > 0 ? (
+    return show ? (
       <React.Fragment>
         <h5 style={{ fontSize: "15px", padding: "0px", margin: "auto" }}>
           {this.props.comment_count} comments
@@ -57,20 +67,25 @@ class Comments extends React.Component {
       </React.Fragment>
     ) : (
       <h5 style={{ fontSize: "14px", padding: "0px", margin: "auto" }}>
-        no comments yet
+        no comments yet{" "}
+        <span
+          style={{ fontSize: "14px", padding: "0px", margin: "auto" }}
+          className="link"
+          onClick={e => {
+            this.toggleShow();
+          }}
+        >
+          make one
+        </span>
       </h5>
     );
   }
   componentDidMount() {
-    return axios
-      .get(
-        `https://pure-falls-39051.herokuapp.com/api/articles/${
-          this.props.article_id
-        }/comments`
-      )
-      .then(({ data }) => {
-        this.setState({ comments: data.comments });
-      });
+    getArticleComments(this.props.article_id).then(comments => {
+      comments.length > 0
+        ? this.setState({ comments, show: true })
+        : this.setState({ comments });
+    });
   }
   toggle() {
     this.setState({ collapse: !this.state.collapse });
@@ -103,6 +118,7 @@ class Comments extends React.Component {
           comments: [...this.state.comments, comment],
           commentBody: ""
         });
+        this.props.increaseCommentCount();
       });
     }
   };
@@ -113,6 +129,9 @@ class Comments extends React.Component {
       return comment.comment_id !== comment_id;
     });
     this.setState({ comments: newComments });
+  };
+  toggleShow = () => {
+    this.setState({ show: true, collapse: true });
   };
 }
 
