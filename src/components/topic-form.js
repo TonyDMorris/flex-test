@@ -29,7 +29,7 @@ class TopicForm extends React.Component {
             onChange={e => {
               this.setState({ description: e.target.value });
             }}
-            placeholder="add a description for your topic here"
+            placeholder="new topics need a description , add one here"
           />
           <InputGroupAddon type="append">
             <Button
