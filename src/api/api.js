@@ -40,7 +40,8 @@ export const getArticles = config => {
       params: config
     })
     .then(({ data }) => {
-      return data.articles;
+      console.log(data);
+      return data.articles ? data.articles : [data.article];
     });
 };
 
@@ -92,4 +93,12 @@ export const postTopic = (topic, description, token) => {
   return axios.post(`${URL}/api/topics`, newTopic, config).then(({ data }) => {
     console.log(data);
   });
+};
+
+export const getArticleComments = article_id => {
+  return axios
+    .get(`${URL}/api/articles/${article_id}/comments`)
+    .then(({ data: { comments } }) => {
+      return comments;
+    });
 };
