@@ -10,7 +10,8 @@ import {
   CardBody,
   CardSubtitle,
   Col,
-  Row
+  Row,
+  Container
 } from "shards-react";
 
 const Article = ({
@@ -25,22 +26,24 @@ const Article = ({
   return (
     <Card style={{ marginTop: "10px" }} small={true}>
       <CardHeader>
-        <Row>
-          <Col className="offset-11">
-            {votes}
-            <span role="img" aria-label="muscle emoji">
-              {votes >= 0 ? "💪" : "😠"}
-            </span>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <ArticleUser author={author} />
-          </Col>
-          <Col className="offset-10">
-            <Topic topic={topic} />
-          </Col>
-        </Row>
+        <Container>
+          <Row className="row justify-content-end">
+            <Col>
+              <div role="img" aria-label="muscle emoji">
+                {votes}
+                {votes >= 0 ? "💪" : "😠"}
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <ArticleUser author={author} />
+            </Col>
+            <Col className="offset-10">
+              <Topic topic={topic} />
+            </Col>
+          </Row>
+        </Container>
       </CardHeader>
 
       <CardBody>
