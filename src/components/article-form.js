@@ -18,7 +18,7 @@ class ArticleForm extends React.Component {
     toggles: { body: false, title: false },
     body: null,
     title: null,
-    topic: null,
+    topic: "cooking",
     highlighting: { body: null, title: null }
   };
   handlePopOver = e => {
@@ -128,9 +128,16 @@ class ArticleForm extends React.Component {
   handleSubmit = () => {
     const { body, title, topic } = this.state;
     const article = { body, title, topic, username: this.props.loggedInUser };
-    postArticle(article, this.props.token).then(article => {
-      navigate(`/articles/${article.article_id}`);
-    });
+    postArticle(article, this.props.token)
+      .then(article => {
+        navigate(`/articles/${article.article_id}`);
+      })
+      .catch(() => {
+        navigate("/error", {
+          replace: true,
+          state: { msg: "dunno why this would error" }
+        });
+      });
   };
   placeTopic = topic => {
     this.setState({ topic });
