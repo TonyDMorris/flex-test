@@ -4,10 +4,11 @@ import Articles from "../components/articles";
 import UserDash from "../components/user-dash";
 const Home = ({ loggedInUser, avatar_url }) => {
   return (
-    <Row className="align-content-center">
-      <UserDash avatar_url={avatar_url} loggedInUser={loggedInUser} />
-
-      <Col>
+    <Row className="justify-content-center">
+      {loggedInUser && (
+        <UserDash avatar_url={avatar_url} loggedInUser={loggedInUser} />
+      )}
+      <Col md={8} lg={8}>
         <Articles loggedInUser={loggedInUser} />
       </Col>
     </Row>
