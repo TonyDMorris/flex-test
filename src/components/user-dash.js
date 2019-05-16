@@ -12,7 +12,7 @@ import { Link } from "@reach/router";
 const UserDash = ({ loggedInUser, avatar_url }) => {
   return (
     loggedInUser && (
-      <Col className="col-3 mt-5">
+      <Col md={3} lg={3}>
         <Card>
           <CardBody>
             <Container>
