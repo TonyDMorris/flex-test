@@ -4,9 +4,9 @@ import ArticleUser from "./article-user";
 import VoteBar from "../components/vote-bar";
 
 import Topic from "./topic";
-import { patchVotes } from "../api/api";
-import { Link } from "@reach/router";
-import { getArticle } from "../api/api";
+import { patchVotes, getArticle, deleteArticle } from "../api/api";
+import { Link, navigate } from "@reach/router";
+import {} from "../api/api";
 import {
   Card,
   CardHeader,
@@ -16,7 +16,8 @@ import {
   CardSubtitle,
   Row,
   Col,
-  Container
+  Container,
+  Button
 } from "shards-react";
 
 class ArticleMain extends React.Component {
@@ -45,11 +46,29 @@ class ArticleMain extends React.Component {
     return title && loggedInUser ? (
       <Card style={{ marginTop: "10px" }} small={false}>
         <CardHeader>
-          <ArticleUser author={author} />
+          <Container>
+            <Row>
+              <Col>
+                <ArticleUser author={author} />
+              </Col>
+              <Col className=" col-1 align-self-end">
+                {loggedInUser === author && (
+                  <Button
+                    onClick={() => {
+                      this.removeArticle();
+                    }}
+                  >
+                    X
+                  </Button>
+                )}
+              </Col>
+            </Row>
+          </Container>
         </CardHeader>
 
         <CardBody>
           <CardTitle>{title}</CardTitle>
+
           <CardSubtitle style={{ colour: "grey", fontSize: "10px" }}>
             {created_at}
           </CardSubtitle>
@@ -106,6 +125,12 @@ class ArticleMain extends React.Component {
     getArticle(article_id).then(article => {
       this.setState({ ...article });
     });
+  };
+  removeArticle = () => {
+    console.log("im here");
+    const { article_id } = this.props;
+    deleteArticle(article_id, this.props.token);
+    navigate("/article-deleted", { replace: true });
   };
 }
 

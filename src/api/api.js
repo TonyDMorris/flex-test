@@ -66,3 +66,16 @@ export const submitComment = (comment, token) => {
       return comment;
     });
 };
+
+export const deleteArticle = (article_id, token) => {
+  const config = {
+    headers: { Authorization: "bearer " + token }
+  };
+  return axios.delete(`${URL}/api/articles/${article_id}`, config);
+};
+export const deleteComment = (comment_id, token) => {
+  const config = {
+    headers: { Authorization: "bearer " + token }
+  };
+  return axios.delete(`${URL}/api/comments/${comment_id}`, config);
+};

@@ -1,13 +1,40 @@
 import React from "react";
 import ArticleUser from "./article-user";
 import VoteBar from "../components/vote-bar";
-const Comment = ({ author, body, votes, incrementVotes, comment_id }) => {
+
+import { Container, Row, Col, Button } from "shards-react";
+const Comment = ({
+  loggedInUser,
+  removeComment,
+  author,
+  body,
+  votes,
+  incrementVotes,
+  comment_id
+}) => {
   return (
     <div
       style={{ backgroundColor: "#f5f6f6" }}
       className="p-2 mt-2 border rounded"
     >
-      <ArticleUser author={author} />
+      <Container>
+        <Row>
+          <Col>
+            <ArticleUser author={author} />
+          </Col>
+          <Col className=" col-1 align-self-end">
+            {loggedInUser === author && (
+              <Button
+                onClick={() => {
+                  removeComment(comment_id);
+                }}
+              >
+                X
+              </Button>
+            )}
+          </Col>
+        </Row>
+      </Container>
 
       <div
         style={{ backgroundColor: "#ffffff" }}

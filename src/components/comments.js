@@ -3,7 +3,8 @@ import axios from "axios";
 import Comment from "./comment";
 
 import { Collapse, FormTextarea, Button } from "shards-react";
-import { patchVotes, submitComment } from "../api/api";
+import { patchVotes, submitComment, deleteComment } from "../api/api";
+
 class Comments extends React.Component {
   state = { comments: [], collapse: false, commentBody: "" };
   render() {
@@ -28,6 +29,8 @@ class Comments extends React.Component {
           {comments.map(comment => {
             return (
               <Comment
+                loggedInUser={this.props.loggedInUser}
+                removeComment={this.removeComment}
                 key={comment.comment_id}
                 comment_id={comment.comment_id}
                 created_at={comment.created_at}
@@ -102,6 +105,14 @@ class Comments extends React.Component {
         });
       });
     }
+  };
+  removeComment = comment_id => {
+    const { token } = this.props;
+    deleteComment(comment_id, token);
+    const newComments = this.state.comments.filter(comment => {
+      return comment.comment_id !== comment_id;
+    });
+    this.setState({ comments: newComments });
   };
 }
 
