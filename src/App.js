@@ -11,9 +11,11 @@ import SingleArticle from "./views/single-article";
 import CreateNewArticle from "./views/create-new-article";
 import { getUserInfo } from "./api/api";
 import ArticleDeleted from "./views/article-deleted";
+import ArticlesByTopic from "./views/articles-by-topic";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css";
 import "./style.css";
+import ErrorView from "./views/error-view";
 
 class App extends React.Component {
   state = { loggedInUser: false, token: "", avatar_url: "" };
@@ -51,6 +53,8 @@ class App extends React.Component {
               />
             )}
             <ArticleDeleted path="/article-deleted" />
+            <ArticlesByTopic loggedInUser={loggedInUser} path="topics/:topic" />
+            <ErrorView default path="/error" />
           </Router>
         </Container>
       </div>
