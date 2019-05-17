@@ -1,40 +1,46 @@
 import React from "react";
-import { Nav, NavItem, NavLink } from "shards-react";
+import { Nav, NavItem } from "shards-react";
 import { Link } from "@reach/router";
 
 const NavMenu = ({ loggedInUser, logout }) => {
+  const linkStyle = { color: "white", margin: "10px", cursor: "pointer" };
+  const navStyle = { backgroundColor: "#027bfd", marginBottom: "10px" };
+
   return !loggedInUser ? (
-    <Nav fill>
+    <Nav style={navStyle} fill>
       <NavItem>
-        <NavLink className="" href="#">
-          <Link to="/">Home</Link>
-        </NavLink>
+        <Link to="/">
+          <h5 style={linkStyle}>Home</h5>
+        </Link>
       </NavItem>
       <NavItem />
       <NavItem>
-        <NavLink href="#">
-          <Link to="/signup">Signup</Link>
-        </NavLink>
+        <Link to="/signup">
+          {" "}
+          <h5 style={linkStyle}>Signup</h5>
+        </Link>
       </NavItem>
       <NavItem>
-        <NavLink href="#">
-          <Link to="/login">Login</Link>
-        </NavLink>
+        <Link to="/login">
+          {" "}
+          <h5 style={linkStyle}>Login</h5>
+        </Link>
       </NavItem>
     </Nav>
   ) : (
-    <Nav fill>
+    <Nav style={navStyle} fill>
       <NavItem>
-        <NavLink className="" href="#">
-          <Link to="/">Home</Link>
-        </NavLink>
+        <Link to="/">
+          {" "}
+          <h5 style={linkStyle}>Home</h5>
+        </Link>
       </NavItem>
       <NavItem />
 
       <NavItem>
-        <NavLink onClick={logout} href="#">
-          logout
-        </NavLink>
+        <h5 onClick={logout} style={linkStyle}>
+          Logout
+        </h5>
       </NavItem>
     </Nav>
   );

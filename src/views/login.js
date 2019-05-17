@@ -23,46 +23,42 @@ class Login extends React.Component {
   render() {
     const { error } = this.state;
     return (
-      <Container className="col-sm-12 col-md-6 col-lg-4 col-md-4">
-        <Row>
-          <Col>
-            <Card>
-              <CardHeader>Login!</CardHeader>
-              <CardBody>
-                <Form>
-                  <small style={{ color: "red" }}>{error}</small>
-                  <FormGroup>
-                    <label htmlFor="#username">Username</label>
-                    <FormInput
-                      onChange={this.handleUserInput}
-                      name="username"
-                      id="username"
-                      placeholder="username"
-                    />
-                  </FormGroup>
-                  <FormGroup>
-                    <label htmlFor="#password">Password</label>
-                    <FormInput
-                      onChange={this.handleUserInput}
-                      type="password"
-                      name="password"
-                      id="password"
-                      placeholder="password"
-                    />
-                  </FormGroup>
+      <Row className="justify-content-center">
+        <Col md={4}>
+          <Card>
+            <CardHeader>Login!</CardHeader>
+            <CardBody>
+              <Form>
+                <small style={{ color: "red" }}>{error}</small>
+                <FormGroup>
+                  <label htmlFor="#username">Username</label>
+                  <FormInput
+                    onChange={this.handleUserInput}
+                    name="username"
+                    id="username"
+                    placeholder="username"
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <label htmlFor="#password">Password</label>
+                  <FormInput
+                    onChange={this.handleUserInput}
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="password"
+                  />
+                </FormGroup>
 
-                  <Col className="row justify-content-md-center">
-                    <Button onClick={this.validateUserInfo} className="col-4">
-                      Login!
-                    </Button>
-                  </Col>
-                </Form>
-              </CardBody>
-              <CardFooter />
-            </Card>
-          </Col>
-        </Row>
-      </Container>
+                <Col style={{ textAlign: "center" }}>
+                  <Button onClick={this.validateUserInfo}>Login!</Button>
+                </Col>
+              </Form>
+            </CardBody>
+            <CardFooter />
+          </Card>
+        </Col>
+      </Row>
     );
   }
   handleUserInput = e => {

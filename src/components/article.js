@@ -39,7 +39,7 @@ const Article = ({
             <Col>
               <ArticleUser author={author} />
             </Col>
-            <Col className="offset-10">
+            <Col style={{ textAlign: "right" }}>
               <Topic topic={topic} />
             </Col>
           </Row>

@@ -22,9 +22,10 @@ const Comment = ({
           <Col>
             <ArticleUser author={author} />
           </Col>
-          <Col className=" col-1 align-self-end">
+          <Col style={{ textAlign: "right" }} className="align-self-start">
             {loggedInUser === author && (
               <Button
+                theme="danger"
                 onClick={() => {
                   removeComment(comment_id);
                 }}

@@ -15,7 +15,7 @@ const User = props => {
         </Card>
       </Col>
       <Col lg="6">
-        <Articles author={props.author} />;
+        <Articles author={props.author} />
       </Col>
     </Row>
   );
