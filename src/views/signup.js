@@ -38,146 +38,144 @@ class Signup extends Component {
     const { name, username, email, password } = highligthing;
 
     return (
-      <Container className="col-sm-12 col-md-6 col-lg-4 col-md-4">
-        <Row>
-          <Col>
-            <Card>
-              <CardHeader>Signup!</CardHeader>
-              <CardBody>
-                <small style={{ color: "red" }}>{error}</small>
-                <Form>
-                  <FormGroup>
-                    <label htmlFor="#name">Name</label>
-                    <FormInput
-                      onBlur={this.handlePopOver}
-                      onFocus={this.handlePopOver}
-                      onChange={e => {
-                        this.checkInput(e.target);
-                      }}
-                      name="name"
-                      invalid={name === null ? null : !name}
-                      valid={name}
-                      id="name"
-                      placeholder="Name"
-                    />
-                    <Popover
-                      placement="left"
-                      target="#name"
-                      open={this.state.toggles.name}
-                    >
-                      <PopoverBody>
-                        Your name must be between 4 - 14 characters and not
-                        include any numbers or spaces.
-                      </PopoverBody>
-                    </Popover>
-                  </FormGroup>
-                  <FormGroup>
-                    <label htmlFor="#username">Username</label>
-                    <FormInput
-                      onBlur={this.handlePopOver}
-                      onFocus={this.handlePopOver}
-                      onChange={e => {
-                        this.checkInput(e.target);
-                      }}
-                      name="username"
-                      invalid={username === null ? null : !username}
-                      valid={username}
-                      id="username"
-                      ref="username"
-                      placeholder="Username"
-                    />
-                    <Popover
-                      placement="left"
-                      target="#username"
-                      open={this.state.toggles.username}
-                    >
-                      <PopoverBody>
-                        Your username is your unique identifier and must be
-                        between 5 - 15 characters long and contain no spaces or
-                        spectial characters E.g.!"%{" "}
-                      </PopoverBody>
-                    </Popover>
-                  </FormGroup>
+      <Row className="justify-content-center">
+        <Col md={4}>
+          <Card>
+            <CardHeader>Signup!</CardHeader>
+            <CardBody>
+              <small style={{ color: "red" }}>{error}</small>
+              <Form>
+                <FormGroup>
+                  <label htmlFor="#name">Name</label>
+                  <FormInput
+                    onBlur={this.handlePopOver}
+                    onFocus={this.handlePopOver}
+                    onChange={e => {
+                      this.checkInput(e.target);
+                    }}
+                    name="name"
+                    invalid={name === null ? null : !name}
+                    valid={name}
+                    id="name"
+                    placeholder="Name"
+                  />
+                  <Popover
+                    placement="left"
+                    target="#name"
+                    open={this.state.toggles.name}
+                  >
+                    <PopoverBody>
+                      Your name must be between 4 - 14 characters and not
+                      include any numbers or spaces.
+                    </PopoverBody>
+                  </Popover>
+                </FormGroup>
+                <FormGroup>
+                  <label htmlFor="#username">Username</label>
+                  <FormInput
+                    onBlur={this.handlePopOver}
+                    onFocus={this.handlePopOver}
+                    onChange={e => {
+                      this.checkInput(e.target);
+                    }}
+                    name="username"
+                    invalid={username === null ? null : !username}
+                    valid={username}
+                    id="username"
+                    ref="username"
+                    placeholder="Username"
+                  />
+                  <Popover
+                    placement="left"
+                    target="#username"
+                    open={this.state.toggles.username}
+                  >
+                    <PopoverBody>
+                      Your username is your unique identifier and must be
+                      between 5 - 15 characters long and contain no spaces or
+                      spectial characters E.g.!"%{" "}
+                    </PopoverBody>
+                  </Popover>
+                </FormGroup>
 
-                  <FormGroup>
-                    <label htmlFor="#E-mail">Email</label>
-                    <FormInput
-                      onBlur={this.handlePopOver}
-                      onFocus={this.handlePopOver}
-                      onChange={e => {
-                        this.checkInput(e.target);
-                      }}
-                      name="email"
-                      invalid={email === null ? null : !email}
-                      valid={email}
-                      id="email"
-                      type="email"
-                      placeholder="E-mail"
-                    />
-                    <small>Optional</small>
-                    <Popover
-                      placement="left"
-                      target="#email"
-                      open={this.state.toggles.email}
-                    >
-                      <PopoverBody>
-                        Email addresses are for promotional purposes only and
-                        are not required to create an account.
-                      </PopoverBody>
-                    </Popover>
-                  </FormGroup>
-                  <FormGroup>
-                    <label htmlFor="#avatar-url">Avatar url</label>
-                    <FormInput
-                      onChange={e => {
-                        this.checkInput(e.target);
-                      }}
-                      name="avatarUrl"
-                      id="avatar-url"
-                      placeholder="Avatar-url"
-                    />
-                    <small>optional</small>
-                  </FormGroup>
-                  <FormGroup>
-                    <label htmlFor="#password">Password</label>
-                    <FormInput
-                      onBlur={this.handlePopOver}
-                      onFocus={this.handlePopOver}
-                      onChange={e => {
-                        this.checkInput(e.target);
-                      }}
-                      name="password"
-                      invalid={password === null ? null : !password}
-                      valid={password}
-                      type="password"
-                      id="password"
-                      placeholder="Password"
-                    />
-                    <Popover
-                      placement="left"
-                      target="#password"
-                      open={this.state.toggles.password}
-                    >
-                      <PopoverBody>
-                        Your password must be atleast 7 characters long, contain
-                        a number, and contain no spaces.
-                      </PopoverBody>
-                    </Popover>
-                  </FormGroup>
-                  <Row className="row justify-content-md-center">
-                    <Col style={{ textAlign: "center" }}>
-                      <Button onClick={this.submitUser} className="col-4">
-                        Sign up!
-                      </Button>
-                    </Col>
-                  </Row>
-                </Form>
-              </CardBody>
-              <CardFooter />
-            </Card>
-          </Col>
-        </Row>
-      </Container>
+                <FormGroup>
+                  <label htmlFor="#E-mail">Email</label>
+                  <FormInput
+                    onBlur={this.handlePopOver}
+                    onFocus={this.handlePopOver}
+                    onChange={e => {
+                      this.checkInput(e.target);
+                    }}
+                    name="email"
+                    invalid={email === null ? null : !email}
+                    valid={email}
+                    id="email"
+                    type="email"
+                    placeholder="E-mail"
+                  />
+                  <small>Optional</small>
+                  <Popover
+                    placement="left"
+                    target="#email"
+                    open={this.state.toggles.email}
+                  >
+                    <PopoverBody>
+                      Email addresses are for promotional purposes only and are
+                      not required to create an account.
+                    </PopoverBody>
+                  </Popover>
+                </FormGroup>
+                <FormGroup>
+                  <label htmlFor="#avatar-url">Avatar url</label>
+                  <FormInput
+                    onChange={e => {
+                      this.checkInput(e.target);
+                    }}
+                    name="avatarUrl"
+                    id="avatar-url"
+                    placeholder="Avatar-url"
+                  />
+                  <small>optional</small>
+                </FormGroup>
+                <FormGroup>
+                  <label htmlFor="#password">Password</label>
+                  <FormInput
+                    onBlur={this.handlePopOver}
+                    onFocus={this.handlePopOver}
+                    onChange={e => {
+                      this.checkInput(e.target);
+                    }}
+                    name="password"
+                    invalid={password === null ? null : !password}
+                    valid={password}
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                  />
+                  <Popover
+                    placement="left"
+                    target="#password"
+                    open={this.state.toggles.password}
+                  >
+                    <PopoverBody>
+                      Your password must be atleast 7 characters long, contain a
+                      number, and contain no spaces.
+                    </PopoverBody>
+                  </Popover>
+                </FormGroup>
+                <Row className="row justify-content-md-center">
+                  <Col style={{ textAlign: "center" }}>
+                    <Button onClick={this.submitUser} className="col-4">
+                      Sign up!
+                    </Button>
+                  </Col>
+                </Row>
+              </Form>
+            </CardBody>
+            <CardFooter />
+          </Card>
+        </Col>
+      </Row>
     );
   }
   handlePopOver = e => {
