@@ -164,12 +164,13 @@ class Signup extends Component {
                       </PopoverBody>
                     </Popover>
                   </FormGroup>
-
-                  <Col className="row justify-content-md-center">
-                    <Button onClick={this.submitUser} className="col-4">
-                      Sign up!
-                    </Button>
-                  </Col>
+                  <Row className="row justify-content-md-center">
+                    <Col style={{ textAlign: "center" }}>
+                      <Button onClick={this.submitUser} className="col-4">
+                        Sign up!
+                      </Button>
+                    </Col>
+                  </Row>
                 </Form>
               </CardBody>
               <CardFooter />
