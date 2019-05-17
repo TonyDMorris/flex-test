@@ -18,7 +18,7 @@ class ArticleForm extends React.Component {
     toggles: { body: false, title: false },
     body: null,
     title: null,
-    topic: "cooking",
+    topic: false,
     highlighting: { body: null, title: null }
   };
   handlePopOver = e => {
@@ -26,7 +26,7 @@ class ArticleForm extends React.Component {
 
     this.setState(
       {
-        toggles: { [name]: !this.state.toggles[name], ...this.state.toggles }
+        toggles: { [name]: !this.state.toggles[name] }
       },
       () => {
         console.log(this.state);
@@ -35,8 +35,10 @@ class ArticleForm extends React.Component {
   };
   render() {
     const {
-      highlighting: { body, title }
+      highlighting: { body, title },
+      topic
     } = this.state;
+
     return (
       <Card>
         <CardBody>
@@ -80,7 +82,7 @@ class ArticleForm extends React.Component {
           <TopicForm token={this.props.token} placeTopic={this.placeTopic} />
           <Button
             onClick={this.handleSubmit}
-            disabled={body && title ? false : true}
+            disabled={body && title && topic ? false : true}
             className="col-4 offset-4 mt-5"
             theme="success"
           >
@@ -93,12 +95,9 @@ class ArticleForm extends React.Component {
   handlePopOver = e => {
     const { name } = e.target;
 
-    this.setState(
-      {
-        toggles: { [name]: !this.state.toggles[name] }
-      },
-      () => console.log(this.state.toggles[name])
-    );
+    this.setState({
+      toggles: { [name]: !this.state.toggles[name] }
+    });
   };
   handleChange = e => {
     const { name, value } = e.target;

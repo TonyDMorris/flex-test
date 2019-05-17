@@ -214,6 +214,8 @@ class Signup extends Component {
           ? (newHighlighting[name] = true)
           : (newHighlighting[name] = false);
         break;
+      default:
+        return;
     }
 
     this.setState({ highligthing: newHighlighting });

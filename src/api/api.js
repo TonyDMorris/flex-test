@@ -90,9 +90,9 @@ export const postTopic = (topic, description, token) => {
     headers: { Authorization: "bearer " + token }
   };
   const newTopic = { slug: topic, description };
-  return axios.post(`${URL}/api/topics`, newTopic, config).then(({ data }) => {
-    console.log(data);
-  });
+  return axios
+    .post(`${URL}/api/topics`, newTopic, config)
+    .then(({ data }) => {});
 };
 
 export const getArticleComments = article_id => {

@@ -9,7 +9,7 @@ const ArticlesByTopic = props => {
     <Row>
       <Col lg="3">
         <Card>
-          <CardBody>
+          <CardBody style={{ textAlign: "center" }}>
             <Row>
               <Col>
                 <h5>Other topics you may like</h5>{" "}

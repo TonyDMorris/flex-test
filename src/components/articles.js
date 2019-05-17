@@ -106,8 +106,7 @@ class Articles extends React.Component {
         navigate("/error", {
           replace: true,
           state: {
-            msg:
-              "whataver you looked for doesnt exist stop messing with the url"
+            msg: " sorry 😔 No articles here"
           }
         });
       });
