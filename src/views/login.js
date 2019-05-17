@@ -78,7 +78,7 @@ class Login extends React.Component {
       });
   };
   defaultLogin = () => {
-    this.setState({ username: "niceperson", password: "password123" }, () => {
+    this.setState({ username: "newperson", password: "password123" }, () => {
       this.validateUserInfo();
     });
   };
