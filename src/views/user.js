@@ -9,7 +9,7 @@ const User = props => {
     <Row>
       <Col lg="3">
         <Card>
-          <CardBody>
+          <CardBody style={{ textAlign: "center" }}>
             <ArticleUser author={props.author} />
           </CardBody>
         </Card>

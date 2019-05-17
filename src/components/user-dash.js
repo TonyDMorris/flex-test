@@ -5,20 +5,20 @@ import Topics from "../components/topics";
 const UserDash = ({ loggedInUser, avatar_url }) => {
   return (
     loggedInUser && (
-      <Col md={3} lg={3}>
+      <Col md={3}>
         <Card>
-          <CardBody>
+          <CardBody style={{ textAlign: "center" }}>
             <Container>
               <Row className="justify-content-center">
-                <Col />
-                <Col>{loggedInUser}</Col>
-                <Col />
+                <Col>
+                  <h5>{loggedInUser}</h5>
+                </Col>
               </Row>
               <Row className="justify-content-center">
                 <Col className="col-auto" />
                 <Col>
                   <img
-                    style={{ maxWidth: "150px" }}
+                    style={{ maxWidth: "150px", margin: "10px" }}
                     src={`${avatar_url}`}
                     alt="users avatar"
                   />
@@ -38,7 +38,7 @@ const UserDash = ({ loggedInUser, avatar_url }) => {
               </Row>
 
               <Row className="justify-content-center">
-                <Col>
+                <Col style={{ margin: "10px" }}>
                   <Topics />
                 </Col>
               </Row>

@@ -8,7 +8,7 @@ const Home = ({ loggedInUser, avatar_url }) => {
       {loggedInUser && (
         <UserDash avatar_url={avatar_url} loggedInUser={loggedInUser} />
       )}
-      <Col md={8} lg={8}>
+      <Col md={8}>
         <Articles loggedInUser={loggedInUser} />
       </Col>
     </Row>

@@ -27,7 +27,7 @@ class Login extends React.Component {
         <Row>
           <Col>
             <Card>
-              <CardHeader>Signup!</CardHeader>
+              <CardHeader>Login!</CardHeader>
               <CardBody>
                 <Form>
                   <small style={{ color: "red" }}>{error}</small>
