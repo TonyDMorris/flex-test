@@ -5,7 +5,6 @@ import {
   Card,
   CardFooter,
   CardHeader,
-  Container,
   Row,
   Col,
   CardBody,
@@ -214,7 +213,7 @@ class Signup extends Component {
           : (newHighlighting[name] = false);
         break;
       default:
-        return;
+        newHighlighting[name] = true;
     }
 
     this.setState({ highligthing: newHighlighting });

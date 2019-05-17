@@ -51,7 +51,8 @@ class Login extends React.Component {
                 </FormGroup>
 
                 <Col style={{ textAlign: "center" }}>
-                  <Button onClick={this.validateUserInfo}>Login!</Button>
+                  <Button onClick={this.validateUserInfo}>Login!</Button>{" "}
+                  <Button onClick={this.defaultLogin}>Default Login</Button>
                 </Col>
               </Form>
             </CardBody>
@@ -75,6 +76,11 @@ class Login extends React.Component {
       .catch(() => {
         this.setState({ error: "incorrect username or password" });
       });
+  };
+  defaultLogin = () => {
+    this.setState({ username: "niceperson", password: "password123" }, () => {
+      this.validateUserInfo();
+    });
   };
 }
 
