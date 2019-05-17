@@ -44,6 +44,7 @@ class Signup extends Component {
             <Card>
               <CardHeader>Signup!</CardHeader>
               <CardBody>
+                <small style={{ color: "red" }}>{error}</small>
                 <Form>
                   <FormGroup>
                     <label htmlFor="#name">Name</label>
@@ -97,7 +98,6 @@ class Signup extends Component {
                       </PopoverBody>
                     </Popover>
                   </FormGroup>
-                  <small style={{ color: "red" }}>{error}</small>
 
                   <FormGroup>
                     <label htmlFor="#E-mail">Email</label>
@@ -179,6 +179,12 @@ class Signup extends Component {
       </Container>
     );
   }
+  handlePopOver = e => {
+    const { name } = e.target;
+    this.setState({
+      toggles: { [name]: !this.state.toggles[name] }
+    });
+  };
   checkInput = target => {
     const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
@@ -208,8 +214,6 @@ class Signup extends Component {
           ? (newHighlighting[name] = true)
           : (newHighlighting[name] = false);
         break;
-      default:
-        newHighlighting[name] = value;
     }
 
     this.setState({ highligthing: newHighlighting });
@@ -219,11 +223,11 @@ class Signup extends Component {
   };
   submitUser = () => {
     const { name, username, avatarUrl, password } = this.state;
-    if ((name, username, password)) {
+    if (name && username && password) {
       return axios
         .post("https://pure-falls-39051.herokuapp.com/signup", {
           password: password,
-          username: username,
+          username: username.toLowerCase(),
           name: name,
           avatar_url: avatarUrl
             ? avatarUrl
@@ -233,16 +237,13 @@ class Signup extends Component {
           navigate("/login", { replace: false });
         })
         .catch(() => {
-          console.log("error");
           this.setState({ error: "username already exists" });
         });
+    } else {
+      this.setState({
+        error: "Name Username and password fields are mandatory"
+      });
     }
-  };
-  handlePopOver = e => {
-    const { name } = e.target;
-    this.setState({
-      toggles: { [name]: !this.state.toggles[name], ...this.state.toggles }
-    });
   };
 }
 export default Signup;

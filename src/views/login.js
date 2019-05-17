@@ -17,9 +17,11 @@ import {
 class Login extends React.Component {
   state = {
     username: "",
-    password: ""
+    password: "",
+    error: null
   };
   render() {
+    const { error } = this.state;
     return (
       <Container className="col-sm-12 col-md-6 col-lg-4 col-md-4">
         <Row>
@@ -28,6 +30,7 @@ class Login extends React.Component {
               <CardHeader>Signup!</CardHeader>
               <CardBody>
                 <Form>
+                  <small style={{ color: "red" }}>{error}</small>
                   <FormGroup>
                     <label htmlFor="#username">Username</label>
                     <FormInput
@@ -63,16 +66,19 @@ class Login extends React.Component {
     );
   }
   handleUserInput = e => {
-    console.log("hello");
     const { name } = e.target;
     this.setState({ [name]: e.target.value });
   };
   validateUserInfo = () => {
     const { username, password } = this.state;
-    return postLogin(username, password).then(token => {
-      this.props.login(username, token);
-      navigate("/", { replace: false });
-    });
+    return postLogin(username, password)
+      .then(token => {
+        this.props.login(username, token);
+        navigate("/", { replace: false });
+      })
+      .catch(() => {
+        this.setState({ error: "incorrect username or password" });
+      });
   };
 }
 
