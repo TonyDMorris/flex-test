@@ -112,6 +112,11 @@ class Articles extends React.Component {
         });
       });
   };
+  componentDidUpdate = prevProps => {
+    if (this.props.topic !== prevProps.topic) {
+      this.fetchArticles();
+    }
+  };
 }
 
 export default Articles;

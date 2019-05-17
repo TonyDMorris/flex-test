@@ -7,7 +7,11 @@ const ErrorView = ({ location }) => {
         <Col>
           <Card>
             <CardBody>
-              <h1>{location && location.state && location.state.msg}</h1>
+              <h1>
+                {location && location.state && location.state.msg
+                  ? location.state.msg
+                  : "404 page not found"}
+              </h1>
             </CardBody>
           </Card>
         </Col>
