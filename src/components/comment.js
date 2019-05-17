@@ -41,11 +41,13 @@ const Comment = ({
         className="p-2 mt-3 border rounded"
       >
         <p>{body}</p>
+
         <VoteBar
           media_id={comment_id}
           incrementVotes={incrementVotes}
           votes={votes}
         />
+
         <div className="offset-md-11" />
       </div>
     </div>

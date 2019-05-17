@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Badge, Tooltip } from "shards-react";
 import { navigate } from "@reach/router";
 
-const Topic = ({ placeTopic, setTopic, topic, description = topic }) => {
+const Topic = ({ placeTopic, setTopic, topic, description }) => {
   const [toggle, setToggle] = useState(false);
   return (
     <React.Fragment>

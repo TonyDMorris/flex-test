@@ -41,7 +41,7 @@ class TopicForm extends React.Component {
             </Button>
           </InputGroupAddon>
         </InputGroup>
-        <small>{error}</small>
+        <small style={{ color: "red" }}>{error}</small>
         <div className="border rounded mt-5">
           <Topics
             more={more}
@@ -55,6 +55,7 @@ class TopicForm extends React.Component {
 
   getNewTopic = () => {
     const { topic, description } = this.state;
+
     postTopic(topic, description, this.props.token)
       .then(topic => {
         this.setState({ more: true });

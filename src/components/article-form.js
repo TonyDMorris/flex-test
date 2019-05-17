@@ -95,7 +95,7 @@ class ArticleForm extends React.Component {
 
     this.setState(
       {
-        toggles: { [name]: !this.state.toggles[name], ...this.state.toggles }
+        toggles: { [name]: !this.state.toggles[name] }
       },
       () => console.log(this.state.toggles[name])
     );
@@ -112,7 +112,7 @@ class ArticleForm extends React.Component {
 
         break;
       default:
-        value.length > 10 && value.length < 50
+        value.length > 10 && value.length < 70
           ? (highlighting[name] = true)
           : (highlighting[name] = false);
 

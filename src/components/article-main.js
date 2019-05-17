@@ -99,11 +99,13 @@ class ArticleMain extends React.Component {
                   <Topic topic={topic} />
                 </Col>
                 <Col className="col-auto">
-                  <VoteBar
-                    media_id={article_id}
-                    incrementVotes={this.incrementVotes}
-                    votes={votes}
-                  />
+                  {loggedInUser && (
+                    <VoteBar
+                      media_id={article_id}
+                      incrementVotes={this.incrementVotes}
+                      votes={votes}
+                    />
+                  )}
                 </Col>
               </Row>
             </Container>
