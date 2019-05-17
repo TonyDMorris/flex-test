@@ -63,7 +63,11 @@ class Articles extends React.Component {
     this.fetchArticles();
   };
   changePage = p => {
-    let config = { author: this.props.author, page: p };
+    let config = {
+      author: this.props.author,
+      page: p,
+      topic: this.props.topic
+    };
     getArticles(config)
       .then(articles => {
         this.setState({ articles: [...this.state.articles, ...articles] });

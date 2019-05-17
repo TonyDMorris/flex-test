@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, CardBody, Container, Col, Row, Button } from "shards-react";
 import { Link } from "@reach/router";
+import Topics from "../components/topics";
 const UserDash = ({ loggedInUser, avatar_url }) => {
   return (
     loggedInUser && (
@@ -8,7 +9,7 @@ const UserDash = ({ loggedInUser, avatar_url }) => {
         <Card>
           <CardBody>
             <Container>
-              <Row>
+              <Row className="justify-content-center">
                 <Col />
                 <Col>{loggedInUser}</Col>
                 <Col />
@@ -26,7 +27,7 @@ const UserDash = ({ loggedInUser, avatar_url }) => {
               </Row>
               <Row className="justify-content-center">
                 <Col className="col-auto" />
-                <Col>
+                <Col className="align-self-center">
                   <Link to="/new-article">
                     <Button>
                       <strong>create new article</strong>
@@ -34,6 +35,12 @@ const UserDash = ({ loggedInUser, avatar_url }) => {
                   </Link>
                 </Col>
                 <Col className="col-auto" />
+              </Row>
+
+              <Row className="justify-content-center">
+                <Col>
+                  <Topics />
+                </Col>
               </Row>
             </Container>
           </CardBody>
