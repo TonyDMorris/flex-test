@@ -30,10 +30,12 @@ class Signup extends Component {
     username: "",
     email: "",
     password: "",
-    avatarUrl: ""
+    avatarUrl: "",
+    error: false
   };
   render() {
-    const { name, username, email, password } = this.state.highligthing;
+    const { error, highligthing } = this.state;
+    const { name, username, email, password } = highligthing;
 
     return (
       <Container className="col-sm-12 col-md-6 col-lg-4 col-md-4">
@@ -95,6 +97,7 @@ class Signup extends Component {
                       </PopoverBody>
                     </Popover>
                   </FormGroup>
+                  <small style={{ color: "red" }}>{error}</small>
 
                   <FormGroup>
                     <label htmlFor="#E-mail">Email</label>
@@ -227,10 +230,11 @@ class Signup extends Component {
             : "http://chittagongit.com/images/default-profile-icon/default-profile-icon-24.jpg"
         })
         .then(({ data }) => {
-          if (data.error) {
-          } else {
-            navigate("/login", { replace: false });
-          }
+          navigate("/login", { replace: false });
+        })
+        .catch(() => {
+          console.log("error");
+          this.setState({ error: "username already exists" });
         });
     }
   };
