@@ -22,42 +22,40 @@ class App extends React.Component {
   render() {
     const { loggedInUser, avatar_url, token } = this.state;
     return (
-      <div>
+      <Container className="col-12 align-content-center">
         <NavMenu logout={this.logout} loggedInUser={this.state.loggedInUser} />
 
-        <Container className="col-12 align-content-center">
-          <Router>
-            <Home
-              avatar_url={avatar_url}
+        <Router>
+          <Home
+            avatar_url={avatar_url}
+            token={token}
+            loggedInUser={loggedInUser}
+            path="/"
+          />
+          <SingleArticle
+            token={token}
+            loggedInUser={loggedInUser}
+            path="articles/:article_id"
+          />
+          <User
+            token={token}
+            loggedInUser={loggedInUser}
+            path="/user/:author"
+          />
+          <Signup path="/signup" />
+          <Login login={this.login} path="/login" />
+          {loggedInUser && (
+            <CreateNewArticle
               token={token}
               loggedInUser={loggedInUser}
-              path="/"
+              path="/new-article"
             />
-            <SingleArticle
-              token={token}
-              loggedInUser={loggedInUser}
-              path="articles/:article_id"
-            />
-            <User
-              token={token}
-              loggedInUser={loggedInUser}
-              path="/user/:author"
-            />
-            <Signup path="/signup" />
-            <Login login={this.login} path="/login" />
-            {loggedInUser && (
-              <CreateNewArticle
-                token={token}
-                loggedInUser={loggedInUser}
-                path="/new-article"
-              />
-            )}
-            <ArticleDeleted path="/article-deleted" />
-            <ArticlesByTopic loggedInUser={loggedInUser} path="topics/:topic" />
-            <ErrorView default path="/error" />
-          </Router>
-        </Container>
-      </div>
+          )}
+          <ArticleDeleted path="/article-deleted" />
+          <ArticlesByTopic loggedInUser={loggedInUser} path="topics/:topic" />
+          <ErrorView default path="/error" />
+        </Router>
+      </Container>
     );
   }
   login = (username, token) => {
