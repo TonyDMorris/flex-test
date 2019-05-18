@@ -22,9 +22,8 @@ class ArticleUser extends React.Component {
       <span className="p0">
         <Link className={"offset-0"} to={`/user/${username}`} type="image/png">
           <img
-            onError={() => {
-              this.onerror = null;
-              this.src =
+            onError={e => {
+              e.target.src =
                 "https://www.digitalcitizen.life/sites/default/files/styles/img_u_large/public/featured/2016-08/photo_gallery.jpg";
             }}
             style={{

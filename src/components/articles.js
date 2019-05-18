@@ -10,7 +10,8 @@ class Articles extends React.Component {
     articles: [],
     moreArticles: true,
     sort_by: "created_at",
-    order: "desc"
+    order: "desc",
+    article_count: 0
   };
   render() {
     const { articles, moreArticles } = this.state;
@@ -63,18 +64,23 @@ class Articles extends React.Component {
     this.fetchArticles();
   };
   changePage = p => {
-    let config = {
-      author: this.props.author,
-      page: p,
-      topic: this.props.topic
-    };
-    getArticles(config)
-      .then(articles => {
-        this.setState({ articles: [...this.state.articles, ...articles] });
-      })
-      .catch(({ error }) => {
-        this.setState({ moreArticles: false });
-      });
+    const { article_count } = this.state;
+    if (p <= Math.ceil(article_count / 10)) {
+      let config = {
+        author: this.props.author,
+        page: p,
+        topic: this.props.topic
+      };
+      getArticles(config)
+        .then(([articles, article_count]) => {
+          this.setState({ articles: [...this.state.articles, ...articles] });
+        })
+        .catch(({ error }) => {
+          navigate("/error");
+        });
+    } else {
+      this.setState({ moreArticles: false });
+    }
   };
   handleSort = sort_by => {
     this.setState({ sort_by }, () => {
@@ -91,7 +97,7 @@ class Articles extends React.Component {
       order
     };
     getArticles(config)
-      .then(articles => {
+      .then(([articles, article_count]) => {
         if (articles.length === 0) {
           navigate("/error", {
             replace: true,
@@ -100,7 +106,7 @@ class Articles extends React.Component {
             }
           });
         }
-        this.setState({ articles });
+        this.setState({ articles, article_count });
       })
       .catch(() => {
         navigate("/error", {

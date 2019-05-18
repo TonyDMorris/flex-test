@@ -39,9 +39,8 @@ export const getArticles = config => {
     .get(`https://pure-falls-39051.herokuapp.com/api/articles`, {
       params: config
     })
-    .then(({ data }) => {
-      console.log(data);
-      return data.articles ? data.articles : [data.article];
+    .then(({ data: { article_count, articles, article } }) => {
+      return articles ? [articles, article_count] : [[article], article_count];
     });
 };
 
