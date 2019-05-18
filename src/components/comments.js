@@ -15,10 +15,11 @@ class Comments extends React.Component {
     comments: [],
     collapse: false,
     commentBody: "",
-    show: false
+    show: false,
+    loading: false
   };
   render() {
-    const { comments, collapse, show } = this.state;
+    const { comments, collapse, show, loading } = this.state;
 
     return show ? (
       <React.Fragment>
@@ -51,6 +52,7 @@ class Comments extends React.Component {
               />
             );
           })}
+          {loading && <small>loading....</small>}
           <br />
           <FormTextarea
             onChange={e => {
@@ -91,20 +93,20 @@ class Comments extends React.Component {
     this.setState({ collapse: !this.state.collapse });
   }
   incrementVotes = (id, isComment, n) => {
-    patchVotes(id, isComment, n, this.props.token).then(comment => {
-      const newComments = this.state.comments.map(oldComment => {
-        if (oldComment.comment_id === id) {
-          oldComment.votes += n;
-          return oldComment;
-        } else {
-          return oldComment;
-        }
-      });
-      this.setState({ comments: newComments });
+    const newComments = this.state.comments.map(oldComment => {
+      if (oldComment.comment_id === id) {
+        oldComment.votes += n;
+        return oldComment;
+      } else {
+        return oldComment;
+      }
     });
+    this.setState({ comments: newComments });
+    patchVotes(id, isComment, n, this.props.token);
   };
 
   handleSubmit = () => {
+    this.setState({ loading: true });
     if (this.state.commentBody.length > 0) {
       const { article_id, token, loggedInUser } = this.props;
       const comment = {
@@ -114,10 +116,15 @@ class Comments extends React.Component {
       };
 
       submitComment(comment, token).then(comment => {
-        this.setState({
-          comments: [...this.state.comments, comment],
-          commentBody: ""
-        });
+        this.setState(
+          {
+            comments: [...this.state.comments, comment],
+            commentBody: ""
+          },
+          () => {
+            this.setState({ loading: false });
+          }
+        );
         this.props.increaseCommentCount();
       });
     }

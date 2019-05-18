@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Dropdown,
   DropdownToggle,
@@ -10,6 +10,14 @@ import {
 const DropDownSort = props => {
   const [sort_by, setSort] = useState("created_at");
   const [open, setOpen] = useState(false);
+  useEffect(() => {
+    props.handleSort(sort_by);
+  }, [sort_by]);
+  const sortText = {
+    author: "Author",
+    created_at: "Date created",
+    votes: "Flex"
+  };
 
   return (
     <Dropdown
@@ -19,13 +27,7 @@ const DropDownSort = props => {
       }}
       group
     >
-      <Button
-        onClick={() => {
-          props.handleSort(sort_by);
-        }}
-      >
-        Sort
-      </Button>
+      <Button style={{ width: "150px" }}>{sortText[sort_by]}</Button>
       <DropdownToggle split />
       <DropdownMenu>
         <DropdownItem

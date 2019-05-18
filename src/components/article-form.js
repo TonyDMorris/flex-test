@@ -72,13 +72,7 @@ class ArticleForm extends React.Component {
             style={{ height: "200px" }}
             onChange={this.handleChange}
           />
-          <Popover
-            placement="left"
-            target="#body"
-            open={this.state.toggles.body}
-          >
-            <PopoverBody>your title should be descriptive</PopoverBody>
-          </Popover>
+
           <TopicForm token={this.props.token} placeTopic={this.placeTopic} />
           <Button
             onClick={this.handleSubmit}

@@ -16,47 +16,47 @@ class Articles extends React.Component {
   render() {
     const { articles, moreArticles } = this.state;
 
-    return (
-      articles.length && (
-        <InfiniteScroll
-          pageStart={1}
-          loadMore={this.changePage}
-          hasMore={moreArticles}
-          loader={
-            <div className="loader" key={1000}>
-              Loading ...
-            </div>
-          }
-        >
-          <DropDownSort handleSort={this.handleSort} />
-          {articles.map(article => {
-            const {
-              topic,
-              votes,
-              article_id,
-              comment_count,
-              author,
-              title,
-              body,
-              created_at
-            } = article;
-            return (
-              <Article
-                token={this.props.token}
-                topic={topic}
-                key={article_id}
-                comment_count={comment_count}
-                article_id={article_id}
-                author={author}
-                title={title}
-                body={body}
-                created_at={created_at}
-                votes={votes}
-              />
-            );
-          })}
-        </InfiniteScroll>
-      )
+    return articles.length ? (
+      <InfiniteScroll
+        pageStart={1}
+        loadMore={this.changePage}
+        hasMore={moreArticles}
+        loader={
+          <div className="loader" key={1000}>
+            Loading ...
+          </div>
+        }
+      >
+        <DropDownSort handleSort={this.handleSort} />
+        {articles.map(article => {
+          const {
+            topic,
+            votes,
+            article_id,
+            comment_count,
+            author,
+            title,
+            body,
+            created_at
+          } = article;
+          return (
+            <Article
+              token={this.props.token}
+              topic={topic}
+              key={article_id}
+              comment_count={comment_count}
+              article_id={article_id}
+              author={author}
+              title={title}
+              body={body}
+              created_at={created_at}
+              votes={votes}
+            />
+          );
+        })}
+      </InfiniteScroll>
+    ) : (
+      <small>Loading ....</small>
     );
   }
 
@@ -75,8 +75,13 @@ class Articles extends React.Component {
         .then(([articles, article_count]) => {
           this.setState({ articles: [...this.state.articles, ...articles] });
         })
-        .catch(({ error }) => {
-          navigate("/error");
+        .catch(({ response: { data } }) => {
+          navigate("/error", {
+            replace: true,
+            state: {
+              msg: ` sorry 😔 ${data.error}`
+            }
+          });
         });
     } else {
       this.setState({ moreArticles: false });
@@ -108,11 +113,11 @@ class Articles extends React.Component {
         }
         this.setState({ articles, article_count });
       })
-      .catch(() => {
+      .catch(({ response: { data } }) => {
         navigate("/error", {
           replace: true,
           state: {
-            msg: " sorry 😔 No articles here"
+            msg: ` sorry 😔 ${data.error}`
           }
         });
       });

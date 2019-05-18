@@ -119,17 +119,18 @@ class ArticleMain extends React.Component {
     );
   }
   incrementVotes = (id, isComment, n) => {
-    patchVotes(id, false, n, this.props.token)
-      .then(article => {
-        const newVotes = this.state.votes + n;
-        this.setState({ votes: newVotes });
-      })
-      .catch(() => {
+    const newVotes = this.state.votes + n;
+    this.setState({ votes: newVotes });
+    patchVotes(id, false, n, this.props.token).catch(
+      ({ response: { data } }) => {
         navigate("/error", {
           replace: true,
-          state: { msg: "dunno why this would error" }
+          state: {
+            msg: ` sorry 😔 ${data.error}`
+          }
         });
-      });
+      }
+    );
   };
   componentDidMount = () => {
     const { article_id } = this.props;
@@ -137,10 +138,12 @@ class ArticleMain extends React.Component {
       .then(article => {
         this.setState({ ...article });
       })
-      .catch(() => {
+      .catch(({ response: { data } }) => {
         navigate("/error", {
           replace: true,
-          state: { msg: "you know full well this doesn't exist" }
+          state: {
+            msg: ` sorry 😔 ${data.error}`
+          }
         });
       });
   };
