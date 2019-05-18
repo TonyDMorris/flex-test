@@ -79,7 +79,8 @@ class App extends React.Component {
   componentDidMount = () => {
     const loggedInUser = localStorage.getItem("loggedInUser");
     const token = localStorage.getItem("token");
-    this.login(loggedInUser, token);
+
+    loggedInUser && token && this.login(loggedInUser, token);
   };
 }
 

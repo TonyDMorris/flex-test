@@ -22,6 +22,7 @@ const SideBanner = ({ leftOrRight }) => {
           backgroundImage: `url(${banner[leftOrRight]})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
+          backgroundPosition: "-100px",
           width: "100%",
           height: "100vh"
         }}

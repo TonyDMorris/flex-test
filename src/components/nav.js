@@ -1,53 +1,64 @@
 import React from "react";
-import { Nav, NavItem, Col, Row } from "shards-react";
+import { NavItem, Col, Row, Navbar, NavbarBrand } from "shards-react";
 import { Link } from "@reach/router";
 
 const NavMenu = ({ loggedInUser, logout }) => {
   const linkStyle = { color: "white", margin: "10px", cursor: "pointer" };
-  const navStyle = { backgroundColor: "#027bfd", marginBottom: "10px" };
+  const navStyle = { marginBottom: "10px" };
 
   return !loggedInUser ? (
     <Row className="justify-content-center">
       <Col md={10}>
-        <Nav style={navStyle} fill>
+        <Navbar style={navStyle} type="dark" theme="primary">
           <NavItem>
-            <Link to="/">
-              <h5 style={linkStyle}>Home</h5>
-            </Link>
+            <NavbarBrand>
+              <Link to="/">
+                <h2 style={{ fontStyle: "italic", fontWeight: "600" }}>
+                  SameFlex
+                </h2>
+              </Link>
+            </NavbarBrand>
           </NavItem>
-          <NavItem />
+
           <NavItem>
-            <Link to="/signup">
-              {" "}
-              <h5 style={linkStyle}>Signup</h5>
-            </Link>
+            <NavbarBrand />
           </NavItem>
           <NavItem>
-            <Link to="/login">
-              {" "}
-              <h5 style={linkStyle}>Login</h5>
-            </Link>
+            <NavbarBrand>
+              <Link to="/login">
+                <h5 style={linkStyle}>Login</h5>
+              </Link>
+              <Link to="/signup">
+                <h5 style={linkStyle}>Signup</h5>
+              </Link>
+            </NavbarBrand>
           </NavItem>
-        </Nav>
+        </Navbar>
       </Col>
     </Row>
   ) : (
     <Row className="justify-content-center">
       <Col md={9}>
-        <Nav style={navStyle} fill>
+        <Navbar style={navStyle} type="dark" theme="primary" style={navStyle}>
           <NavItem>
-            <Link to="/">
-              <h5 style={linkStyle}>Home</h5>
-            </Link>
+            <NavbarBrand>
+              <Link to="/">
+                <h2 style={{ fontStyle: "italic", fontWeight: "600" }}>
+                  SameFlex
+                </h2>
+              </Link>
+            </NavbarBrand>
           </NavItem>
           <NavItem />
 
           <NavItem>
-            <h5 onClick={logout} style={linkStyle}>
-              Logout
-            </h5>
+            <NavbarBrand>
+              <h5 onClick={logout} style={linkStyle}>
+                Logout
+              </h5>
+            </NavbarBrand>
           </NavItem>
-        </Nav>
+        </Navbar>
       </Col>
     </Row>
   );
