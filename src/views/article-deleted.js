@@ -1,22 +1,26 @@
 import React from "react";
 import { navigate } from "@reach/router";
-import { Button, Card, CardBody } from "shards-react";
+import { Button, Card, CardBody, Row, Col } from "shards-react";
 const ArticleDeleted = () => {
   return (
-    <Card className="col-6 offset-3">
-      <CardBody>
-        <h1>
-          Article deleted{" "}
-          <Button
-            onClick={() => {
-              navigate("/", { replace: true });
-            }}
-          >
-            OK
-          </Button>
-        </h1>
-      </CardBody>
-    </Card>
+    <Row className="justify-content-center">
+      <Col clasName="align-self-center" md={6}>
+        <Card>
+          <CardBody>
+            <h1>
+              Article deleted{" "}
+              <Button
+                onClick={() => {
+                  navigate("/", { replace: true });
+                }}
+              >
+                OK
+              </Button>
+            </h1>
+          </CardBody>
+        </Card>
+      </Col>
+    </Row>
   );
 };
 
