@@ -4,7 +4,7 @@ import { Button, Card, CardBody, Row, Col } from "shards-react";
 const ArticleDeleted = () => {
   return (
     <Row className="justify-content-center">
-      <Col clasName="align-self-center" md={6}>
+      <Col style={{ textAlign: "center" }} md={6}>
         <Card>
           <CardBody>
             <h1>
