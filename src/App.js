@@ -60,9 +60,12 @@ class App extends React.Component {
   }
   login = (username, token) => {
     this.setState({ loggedInUser: username, token });
+    localStorage.setItem("loggedInUser", username);
+    localStorage.setItem("token", token);
   };
   logout = () => {
     this.setState({ loggedInUser: "", token: "" });
+    localStorage.clear();
     navigate("/login");
   };
   componentDidUpdate = () => {
@@ -72,6 +75,11 @@ class App extends React.Component {
         this.setState({ avatar_url: data.user.avatar_url });
       });
     }
+  };
+  componentDidMount = () => {
+    const loggedInUser = localStorage.getItem("loggedInUser");
+    const token = localStorage.getItem("token");
+    this.login(loggedInUser, token);
   };
 }
 
