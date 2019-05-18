@@ -28,9 +28,7 @@ class ArticleForm extends React.Component {
       {
         toggles: { [name]: !this.state.toggles[name] }
       },
-      () => {
-        console.log(this.state);
-      }
+      () => {}
     );
   };
   render() {
