@@ -1,3 +1,6 @@
+#root {
+  background-color: #b0dbff;
+}
 .link:hover {
   text-decoration: underline;
   cursor: pointer;
