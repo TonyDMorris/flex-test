@@ -3,20 +3,22 @@ import React, { useState } from "react";
 import { Badge, Tooltip } from "shards-react";
 import { navigate } from "@reach/router";
 
-const Topic = ({ placeTopic, setTopic, topic, description }) => {
+const Topic = ({ handleClick, topic, description }) => {
   const [toggle, setToggle] = useState(false);
   return (
     <React.Fragment>
-      <Badge id={`${topic.replace(/\s/g, "-")}`} theme="primary">
+      <Badge
+        id={`${topic.replace(/\s/g, "-")}`}
+        style={{
+          backgroundColor: "#80FFF9",
+          border: "solid 1px #74CFE8",
+          marginRight: "3px"
+        }}
+      >
         <div
           className="link"
           onClick={e => {
-            if (setTopic && placeTopic) {
-              setTopic(e.target.innerText);
-              placeTopic(e.target.innerText);
-            } else {
-              navigate(`/topics/${topic}`);
-            }
+            handleClick ? handleClick(topic) : navigate(`/topics/${topic}`);
           }}
         >
           {topic}
