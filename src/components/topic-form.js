@@ -1,75 +1,122 @@
 import React from "react";
-import { InputGroup, FormInput, Button, InputGroupAddon } from "shards-react";
-import Topics from "./topics";
-import { postTopic } from "../api/api";
-
+import { getTopics, postTopic } from "../api/api";
+import Topic from "./topic";
+import {
+  Collapse,
+  InputGroup,
+  FormInput,
+  InputGroupAddon,
+  Button
+} from "shards-react";
 class TopicForm extends React.Component {
   state = {
-    description: null,
-    topic: "pick a topic or make one",
-    more: false,
+    topics: [],
+    selectedTopic: false,
+    toggle: false,
+    newSlug: false,
+    newDescription: false,
     error: ""
   };
   render() {
-    const { topic, more, error } = this.state;
+    const { topics, selectedTopic, toggle, error } = this.state;
 
     return (
-      <React.Fragment>
-        <InputGroup className="mt-1">
-          <FormInput
-            onChange={e => {
-              this.setState({ topic: e.target.value });
-              this.props.placeTopic(e.target.value);
-            }}
-            valid={topic ? true : false}
-            invalid={topic ? false : true}
-            value={topic}
-          />
-          <FormInput
-            onChange={e => {
-              this.setState({ description: e.target.value });
-            }}
-            placeholder="new topics need a description , add one here"
-          />
-          <InputGroupAddon type="append">
-            <Button
-              onClick={e => {
-                this.getNewTopic();
-              }}
-            >
-              Add
-            </Button>
-          </InputGroupAddon>
-        </InputGroup>
-        <small style={{ color: "red" }}>{error}</small>
-        <div className="border rounded mt-5">
-          <Topics
-            more={more}
-            placeTopic={this.props.placeTopic}
-            setTopic={this.setTopic}
-          />
+      <div style={{ padding: "10px" }}>
+        <div>
+          {selectedTopic ? (
+            selectedTopic.map(topic => {
+              return (
+                <Topic
+                  key={`${topic.slug}selection`}
+                  topic={topic.slug}
+                  description={topic.description}
+                  handleClick={this.handleRemove}
+                />
+              );
+            })
+          ) : (
+            <small>Please select a topic from below</small>
+          )}
         </div>
-      </React.Fragment>
+        <div className="border rounded p-2 mt-5">
+          {topics.map(topic => {
+            return (
+              <Topic
+                key={topic.slug}
+                handleClick={this.handleClick}
+                topic={topic.slug}
+                description={topic.description}
+              />
+            );
+          })}
+        </div>
+        {!toggle && (
+          <small>
+            Dont see anything that matches? create a new topic{" "}
+            <span className="link" onClick={this.toggle}>
+              here
+            </span>
+          </small>
+        )}
+        {error && <small style={{ color: "red" }}>{error}</small>}
+        <Collapse className="mt-3" open={toggle}>
+          <small>Add a name and a brief description to your new topic</small>
+          <InputGroup className="mt-1">
+            <FormInput
+              onChange={e => {
+                this.handleChange("newSlug", e.target.value);
+              }}
+              placeholder="Name"
+            />
+            <FormInput
+              onChange={e => {
+                this.handleChange("newDescription", e.target.value);
+              }}
+              placeholder="Description"
+            />
+            <InputGroupAddon type="append">
+              <Button onClick={this.handleSubmit}>Add</Button>
+            </InputGroupAddon>
+          </InputGroup>
+        </Collapse>
+      </div>
     );
   }
-
-  getNewTopic = () => {
-    const { topic, description } = this.state;
-
-    postTopic(topic, description, this.props.token)
-      .then(topic => {
-        this.setState({ more: true });
-        this.setState({ more: false });
-      })
-      .catch(() => {
-        const err = !this.state.description
-          ? "you need to add a description"
-          : "this topic already exists";
-        this.setState({ error: err });
-      });
+  componentDidMount = () => {
+    getTopics().then(topics => {
+      this.setState({ topics });
+    });
   };
-  setTopic = topic => {
-    this.setState({ topic, description: topic });
+  handleClick = topic => {
+    const { topics } = this.state;
+    const { setTopic } = this.props;
+    const selectedTopic = topics.filter(oldTopic => {
+      return oldTopic.slug === topic;
+    });
+    setTopic(topic);
+    this.setState({ selectedTopic });
+  };
+  toggle = () => {
+    const { toggle } = this.state;
+    this.setState({ toggle: !toggle });
+  };
+  handleChange = (input, value) => {
+    this.setState({ [input]: value });
+  };
+  handleSubmit = () => {
+    const { newSlug, newDescription, topics } = this.state;
+
+    if (newSlug && newDescription) {
+      postTopic(newSlug, newDescription, this.props.token)
+        .then(newTopic => {
+          this.setState({ topics: [...topics, newTopic], error: "" });
+        })
+        .catch(() => {
+          this.setState({ error: "this topic already exists" });
+        });
+    } else {
+      this.setState({ error: "All fields are required" });
+    }
   };
 }
 
