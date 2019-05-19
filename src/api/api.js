@@ -91,7 +91,9 @@ export const postTopic = (topic, description, token) => {
   const newTopic = { slug: topic, description };
   return axios
     .post(`${URL}/api/topics`, newTopic, config)
-    .then(({ data }) => {});
+    .then(({ data: { topic } }) => {
+      return topic;
+    });
 };
 
 export const getArticleComments = article_id => {
