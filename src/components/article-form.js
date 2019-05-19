@@ -8,9 +8,7 @@ import {
   CardBody,
   CardTitle,
   FormInput,
-  Button,
-  Popover,
-  PopoverBody
+  Button
 } from "shards-react";
 
 class ArticleForm extends React.Component {
@@ -51,13 +49,6 @@ class ArticleForm extends React.Component {
               name="title"
               id="title"
             />
-            <Popover
-              placement="left"
-              target="#title"
-              open={this.state.toggles.title}
-            >
-              <PopoverBody>your title should be descriptive</PopoverBody>
-            </Popover>
           </CardTitle>
           <p className="mb-2">{"🤔 What's the content?"}</p>
           <FormTextarea
@@ -70,8 +61,7 @@ class ArticleForm extends React.Component {
             style={{ height: "200px" }}
             onChange={this.handleChange}
           />
-
-          <TopicForm token={this.props.token} placeTopic={this.placeTopic} />
+          <TopicForm token={this.props.token} setTopic={this.setTopic} />
           <Button
             onClick={this.handleSubmit}
             disabled={body && title && topic ? false : true}
@@ -130,7 +120,7 @@ class ArticleForm extends React.Component {
         });
       });
   };
-  placeTopic = topic => {
+  setTopic = topic => {
     this.setState({ topic });
   };
 }
