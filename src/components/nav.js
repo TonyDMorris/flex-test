@@ -1,5 +1,5 @@
 import React from "react";
-import { NavItem, Col, Row, Navbar, NavbarBrand } from "shards-react";
+import { Col, Row, Navbar, NavbarBrand } from "shards-react";
 import { Link } from "@reach/router";
 
 const NavMenu = ({ loggedInUser, logout }) => {
