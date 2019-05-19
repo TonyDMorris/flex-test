@@ -1,6 +1,6 @@
 import React from "react";
-import leftImage from "./fashion-man-model-2237654.jpg";
-import rightImage from "./burning-fashion-newspaper-2216527.jpg";
+import leftImage from "./adult-art-artistic-917594.jpg";
+import rightImage from "./art-artistic-blur-2234685.jpg";
 import { Link } from "@reach/router";
 import { Col } from "shards-react";
 const SideBanner = ({ leftOrRight }) => {
@@ -9,7 +9,7 @@ const SideBanner = ({ leftOrRight }) => {
     right: rightImage
   };
   return (
-    <Col md={2}>
+    <Col md={3}>
       <div
         style={{
           top: "0",
