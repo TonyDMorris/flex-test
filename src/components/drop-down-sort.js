@@ -8,11 +8,12 @@ import {
 } from "shards-react";
 
 const DropDownSort = props => {
+  const { handleSort } = props;
   const [sort_by, setSort] = useState("created_at");
   const [open, setOpen] = useState(false);
   useEffect(() => {
-    props.handleSort(sort_by);
-  }, [sort_by]);
+    handleSort(sort_by);
+  }, [sort_by, handleSort]);
   const sortText = {
     author: "Author",
     created_at: "Date created",
