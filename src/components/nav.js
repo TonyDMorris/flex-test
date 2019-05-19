@@ -39,7 +39,7 @@ const NavMenu = ({ loggedInUser, logout }) => {
   ) : (
     <Row className="justify-content-center">
       <Col md={9}>
-        <Navbar style={navStyle} type="dark" theme="primary" style={navStyle}>
+        <Navbar style={navStyle} type="dark" theme="primary">
           <NavItem>
             <NavbarBrand>
               <Link to="/">
