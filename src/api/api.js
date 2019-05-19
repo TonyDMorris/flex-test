@@ -81,7 +81,7 @@ export const deleteComment = (comment_id, token) => {
 };
 
 export const getTopics = () => {
-  return axios.get(`${URL}/api/topics`).then(({ data }) => data.topics);
+  return axios.get(`${URL}/api/topics`).then(({ data: { topics } }) => topics);
 };
 
 export const postTopic = (topic, description, token) => {
