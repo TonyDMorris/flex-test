@@ -1,68 +1,66 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# SameFlex front-end React app
 
-## Available Scripts
+Try a working verison of the app here ----> [SameFlex](https://sameflex.netlify.com/)
 
-In the project directory, you can run:
+SameFlex is an attempt at recreating a similar post-sharing site like reddit.
 
-### `npm start`
+Some of the key functionality implemented is:
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Article creation
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+- Account creation
 
-### `npm test`
+- article and comment voting
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Login functionality
 
-### `npm run build`
+- infinate pagination
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- article and comment deletion
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+- Dynamic navigation through the site e.g. clicking on user profile pictures or topic buttons to find relevant content.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+SameFlex is primarily a light hearted take on social media distributions such as reddit and in part FaceBook.
 
-### `npm run eject`
+The site has articles categorised by topic and the user who posted them, the articles can be sorted manually by post date, author or votes(Flex).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+the user can navigate around the articles by clicking on a posting users profile image to get a list of their articles or clicking on a topic pill which will load articles of that topic.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+by design the articles cannot be directly searched but using reach router each article has its own unique url which can be shared, or articles can discovered by clicking the supplied topic pills.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Each article can be upvoted (Flex) or downvoted (Hate).
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+logged in users can comment on articles and in turn these comments can also be voted on.
 
-## Learn More
+## Built with
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The site was built on top of a [Knex](https://knexjs.org/) and [Express](https://expressjs.com/) back end which can be found here ---> [NC-News](https://pure-falls-39051.herokuapp.com/) which is a production deployment of [NC-News](https://github.com/TonyDMorris/NC-News)(repo).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Built with [React](https://reactjs.org/) and Bootstrapped with [create-react-app](https://facebook.github.io/create-react-app/docs/getting-started)
+using styled components from [Shards-React](https://designrevision.com/docs/shards-react/getting-started)
+Api interactions powered by [axios](https://github.com/axios/axios)
+with site navigation powerd by [@Reach-Router](https://reach.tech/router)
 
-### Code Splitting
+## Running the app locally
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Start by cloning this repository.
 
-### Analyzing the Bundle Size
+```bash
+git clone
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Once the download has completed you can install the dependencies.
 
-### Making a Progressive Web App
+```bash
+cd Flex-test
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+```bash
+npm install
+```
 
-### Advanced Configuration
+Once all the dependencies have been installed you can run the app with
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```bash
+npm start
+```
