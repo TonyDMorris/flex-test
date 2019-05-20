@@ -45,7 +45,7 @@ using styled components from [Shards-React](https://designrevision.com/docs/shar
 
 Api interactions powered by [axios](https://github.com/axios/axios)^0.18.0
 
-with site navigation powerd by [@Reach-Router](https://reach.tech/router)
+with site navigation powerd by [@Reach-Router](https://reach.tech/router)^1.2.1
 
 infinate scrolling provided by [react-infinite-scroller](https://www.npmjs.com/package/react-infinite-scroller)^1.2.4
 
