@@ -2,6 +2,8 @@
 
 Try a working verison of the app here ----> [SameFlex](https://sameflex.netlify.com/)
 
+or you can view the repo here ---> [Sameflex](https://github.com/TonyDMorris/SameFlex)
+
 SameFlex is an attempt at recreating a similar post-sharing site like reddit.
 
 Some of the key functionality implemented is:
