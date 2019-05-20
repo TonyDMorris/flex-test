@@ -54,13 +54,13 @@ infinate scrolling provided by [react-infinite-scroller](https://www.npmjs.com/p
 Start by cloning this repository.
 
 ```bash
-git clone
+git clone https://github.com/TonyDMorris/SameFlex.git
 ```
 
 Once the download has completed you can install the dependencies.
 
 ```bash
-cd Flex-test
+cd SameFlex
 ```
 
 ```bash
