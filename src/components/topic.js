@@ -8,7 +8,7 @@ const Topic = ({ handleClick, topic, description }) => {
   return (
     <React.Fragment>
       <Badge
-        id={`${topic.replace(/\s/g, "-")}`}
+        id={handleClick`${topic.replace(/\s/g, "-")}`}
         style={{
           backgroundColor: "#80FFF9",
           border: "solid 1px #74CFE8",

@@ -1,3 +1,6 @@
+* {
+  font-weight: 600;
+}
 #root {
   background-color: #b0dbff;
 }
@@ -7,4 +10,9 @@
 }
 .link {
   color: blue;
+}
+.btn {
+  color: white;
+  font-size: 15px;
+  font-weight: 900;
 }

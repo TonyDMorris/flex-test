@@ -51,7 +51,7 @@ const Article = ({
           <Link to={`/articles/${article_id}`}>{title}</Link>
         </CardTitle>
         <CardSubtitle style={{ colour: "grey", fontSize: "10px" }}>
-          {created_at}
+          <strong style={{ color: "black" }}>{created_at}</strong>
         </CardSubtitle>
       </CardBody>
     </Card>

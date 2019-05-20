@@ -11,15 +11,23 @@ const NavMenu = ({ loggedInUser, logout }) => {
       <Col>
         <Navbar style={navStyle} type="dark" theme="primary">
           <Link className="link navbar-brand" to="/">
-            <h2 style={{ fontStyle: "italic", fontWeight: "600" }}>SameFlex</h2>
+            <h2
+              style={{
+                fontStyle: "italic",
+                fontWeight: "600",
+                color: "#ffffff"
+              }}
+            >
+              SameFlex
+            </h2>
           </Link>
           <span>
             <Link to="/login">
-              <h5 style={linkStyle}>Login</h5>
+              <h3 style={linkStyle}>Login</h3>
             </Link>
 
             <Link to="/signup">
-              <h5 style={linkStyle}>Signup</h5>
+              <h3 style={linkStyle}>Signup</h3>
             </Link>
           </span>
         </Navbar>
@@ -33,9 +41,9 @@ const NavMenu = ({ loggedInUser, logout }) => {
             <h3 style={{ fontStyle: "italic", fontWeight: "600" }}>SameFlex</h3>
           </Link>
 
-          <h5 onClick={logout} style={linkStyle}>
+          <h3 onClick={logout} style={linkStyle}>
             Logout
-          </h5>
+          </h3>
         </Navbar>
       </Col>
     </Row>
