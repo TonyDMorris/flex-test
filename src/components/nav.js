@@ -14,7 +14,7 @@ const NavMenu = ({ loggedInUser, logout }) => {
             <h2
               style={{
                 fontStyle: "italic",
-                fontWeight: "600",
+                fontWeight: "900",
                 color: "#ffffff"
               }}
             >
