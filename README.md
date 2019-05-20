@@ -38,10 +38,11 @@ logged in users can comment on articles and in turn these comments can also be v
 
 The site was built on top of a [Knex](https://knexjs.org/) and [Express](https://expressjs.com/) back end which can be found here ---> [NC-News](https://pure-falls-39051.herokuapp.com/) which is a production deployment of [NC-News](https://github.com/TonyDMorris/NC-News)(repo).
 
-Built with [React](https://reactjs.org/) and Bootstrapped with [create-react-app](https://facebook.github.io/create-react-app/docs/getting-started)
-using styled components from [Shards-React](https://designrevision.com/docs/shards-react/getting-started)
-Api interactions powered by [axios](https://github.com/axios/axios)
+Built with [React](https://reactjs.org/)^16.8.6 and Bootstrapped with [create-react-app](https://facebook.github.io/create-react-app/docs/getting-started)
+using styled components from [Shards-React](https://designrevision.com/docs/shards-react/getting-started)^1.0.3
+Api interactions powered by [axios](https://github.com/axios/axios)^0.18.0
 with site navigation powerd by [@Reach-Router](https://reach.tech/router)
+infinate scrolling provided by [react-infinite-scroller](https://www.npmjs.com/package/react-infinite-scroller)^1.2.4
 
 ## Running the app locally
 
