@@ -1,6 +1,6 @@
 import axios from "axios";
 const URL = "https://pure-falls-39051.herokuapp.com";
-
+// "http://localhost:9090"
 export const postLogin = (username, password) => {
   return axios
     .post(`${URL}/login`, {
@@ -36,7 +36,7 @@ export const getArticle = article_id => {
 
 export const getArticles = config => {
   return axios
-    .get(`https://pure-falls-39051.herokuapp.com/api/articles`, {
+    .get(`${URL}/api/articles`, {
       params: config
     })
     .then(({ data: { article_count, articles, article } }) => {
