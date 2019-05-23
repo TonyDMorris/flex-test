@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import { Badge, Tooltip } from "shards-react";
 import { navigate } from "@reach/router";
 
-const Topic = ({ handleClick, topic, description }) => {
+const Topic = ({ toolTip, handleClick, topic, description }) => {
   const [toggle, setToggle] = useState(false);
+
   return (
     <React.Fragment>
       <Badge
@@ -24,15 +25,17 @@ const Topic = ({ handleClick, topic, description }) => {
           {topic}
         </div>
       </Badge>
-      <Tooltip
-        open={toggle}
-        target={`#${topic.replace(/\s/g, "-")}`}
-        toggle={() => {
-          setToggle(!toggle);
-        }}
-      >
-        {description}
-      </Tooltip>
+      {toolTip && (
+        <Tooltip
+          open={toggle}
+          target={`#${topic.replace(/\s/g, "-")}`}
+          toggle={() => {
+            setToggle(!toggle);
+          }}
+        >
+          {description}
+        </Tooltip>
+      )}
     </React.Fragment>
   );
 };
