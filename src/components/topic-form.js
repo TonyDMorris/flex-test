@@ -42,6 +42,7 @@ class TopicForm extends React.Component {
           {topics.map(topic => {
             return (
               <Topic
+                toolTip={true}
                 key={topic.slug}
                 handleClick={this.handleClick}
                 topic={topic.slug}

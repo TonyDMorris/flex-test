@@ -4,12 +4,15 @@ import { getTopics } from "../api/api";
 
 class Topics extends React.Component {
   state = { topics: [] };
+
   render() {
+    const { toolTip } = this.props;
     const { topics } = this.state;
     return topics ? (
       topics.map(topic => {
         return (
           <Topic
+            toolTip={toolTip}
             key={topic.slug}
             placeTopic={this.props.placeTopic}
             setTopic={this.props.setTopic}

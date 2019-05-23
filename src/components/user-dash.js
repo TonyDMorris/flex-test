@@ -39,7 +39,7 @@ const UserDash = ({ loggedInUser, avatar_url }) => {
 
               <Row className="justify-content-center">
                 <Col style={{ margin: "10px" }}>
-                  <Topics />
+                  <Topics toolTip={true} />
                 </Col>
               </Row>
             </Container>

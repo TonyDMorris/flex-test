@@ -12,12 +12,12 @@ const ArticlesByTopic = props => {
           <CardBody style={{ textAlign: "center" }}>
             <Row>
               <Col>
-                <h5>Other topics you may like</h5>{" "}
+                <h5>Other topics you may like</h5>
               </Col>
             </Row>
             <Row>
               <Col>
-                <Topics />
+                <Topics toolTip={true} />
               </Col>
             </Row>
           </CardBody>
