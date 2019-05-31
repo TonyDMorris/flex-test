@@ -1,8 +1,9 @@
 * {
   font-weight: 600;
 }
-#root {
+body {
   background-color: #b0dbff;
+  height: 100%;
 }
 .link:hover {
   text-decoration: underline;
